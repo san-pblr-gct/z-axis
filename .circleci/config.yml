@@ -1,0 +1,50 @@
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+    docker:
+      - image: circleci/node:8-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          # cache NPM modules and the folder with the Cypress binary
+          paths:
+            - node_modules
+            - ~/.npm
+            - ~/.cache
+      - run:
+          name: Lint
+          command: npm run lint
+      - run:
+          name: Test
+          command: npm test
+      - run:
+          name: Codecov
+          command: npm run codecov
+      - run:
+          name: Browserstack
+          command: npm run browserstack
+      - run:
+          name: Build & Deploy
+          command: npm run firebase:deploy
+      - run:
+          name: Cypress
+          command: npm run cypress:run
+      - run:
+          name: Puppeteer Coverage
+          command: npm run puppeteer:coverage
+      - run:
+          name: Puppeteer SW Cache
+          command: npm run puppeteer:caching

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "jsdrome"
+  },
+  "targets": {
+    "jsdrome": {
+      "hosting": {
+        "prod": [
+          "jsdrome"
+        ]
+      }
+    }
+  }
+}
