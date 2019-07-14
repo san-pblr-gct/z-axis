@@ -23,8 +23,9 @@
 
 const chalk = require('chalk');
 const puppeteer = require('puppeteer');
+const { stageUrl } = require('../src/config/variables');
 
-const URL = process.env.URL || 'https://www.chromestatus.com/features';
+const URL = stageUrl;
 
 (async () => {
 

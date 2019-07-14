@@ -1,5 +1,5 @@
 {
-  "name": "@jsdrome/jsdrome",
+  "name": "@jsdrome/z-axis",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,25 +16,27 @@
     "codecov": "codecov -t $CODECOV_TOKEN",
     "browserstack": "karma start ./karma/karma.bs.conf.js",
     "start": "node server/index.js",
-    "firebase:deploy": "npm run build:prod && npm run build:server && firebase deploy --only functions,hosting",
-    "puppeteer:coverage": "URL=https://jsdrome.web.app node puppeteer/coverage",
-    "puppeteer:crawlsite": "URL=https://jsdrome.web.app node puppeteer/crawlsite",
-    "puppeteer:googlesearch": "URL=https://jsdrome.web.app node puppeteer/google_search_features",
-    "puppeteer:caching": "URL=https://jsdrome.web.app node puppeteer/verify_sw_caching",
+    "firebase:stage:functions": "npm run build:server && firebase use default && firebase deploy --only functions",
+    "firebase:stage:hosting": "npm run build:prod && firebase use test && firebase deploy --only hosting:test",
+    "firebase:prod:hosting": "npm run build:prod && firebase use default && firebase deploy --only hosting:prod",
+    "puppeteer:coverage": "node puppeteer/coverage",
+    "puppeteer:crawlsite": "node puppeteer/crawlsite",
+    "puppeteer:googlesearch": "node puppeteer/google_search_features",
+    "puppeteer:caching": "node puppeteer/verify_sw_caching",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --record --key $CYPRESS_TOKEN",
     "clean": "rimraf _dist _test _docs .firebase ./*.log node_modules"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsdrome/jsdrome.git"
+    "url": "git+https://github.com/jsdrome/z-axis.git"
   },
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jsDrome/jsDrome/issues"
+    "url": "https://github.com/jsDrome/z-axis/issues"
   },
-  "homepage": "https://github.com/jsDrome/jsDrome#readme",
+  "homepage": "https://github.com/jsDrome/z-axis#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",

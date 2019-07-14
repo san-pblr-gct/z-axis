@@ -1,12 +1,12 @@
 const links = require('../config/links');
 
-const shortName = 'jsDrome';
-const title = 'jsDrome';
+const shortName = 'Z-axis';
+const title = 'Z-axis';
 const author = 'Sreeram Padmanabhan';
 const themeColor = '#ffffff';
-const description = 'Web of thoughts';
+const description = 'Online Treasure hunt';
 const shortDescription = 'Web Artist';
-const domain = 'https://jsdrome.web.app';
+const domain = 'https://z-axis.web.app';
 
 const getPaths = () => {
   let paths = [];
@@ -36,6 +36,7 @@ module.exports = {
   description,
   shortDescription,
   url: domain,
+  stageUrl: 'https://z-axis-test.web.app',
   author,
   manifest: {
     seed: {

@@ -30,8 +30,9 @@
 const puppeteer = require('puppeteer');
 const chalk = require('chalk');
 const Table = require('cli-table');
+const { stageUrl } = require('../src/config/variables');
 
-const URL = process.env.URL || 'https://www.chromestatus.com/features';
+const URL = stageUrl;
 
 const EVENTS = [
   'domcontentloaded',

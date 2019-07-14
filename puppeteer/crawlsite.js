@@ -40,8 +40,9 @@ const del = require('del');
 const util = require('util');
 const puppeteer = require('puppeteer');
 const sharp = require('sharp');
+const { stageUrl } = require('../src/config/variables');
 
-const URL = process.env.URL || 'https://news.polymer-project.org/';
+const URL = stageUrl;
 const SCREENSHOTS = process.argv.includes('--screenshots');
 const DEPTH = parseInt(process.env.DEPTH) || 2;
 const VIEWPORT = SCREENSHOTS ? {width: 1028, height: 800, deviceScaleFactor: 2} : null;

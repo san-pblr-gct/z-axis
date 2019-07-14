@@ -37,10 +37,13 @@ jobs:
           name: Browserstack
           command: npm run browserstack
       - run:
-          name: Build & Deploy
-          command: npm run firebase:deploy
+          name: Functions
+          command: npm run firebase:stage:functions
       - run:
-          name: Cypress
+          name: Stage Hosting
+          command: npm run firebase:stage:hosting
+      - run:
+          name: Cypress test
           command: npm run cypress:run
       - run:
           name: Puppeteer Coverage
@@ -48,3 +51,6 @@ jobs:
       - run:
           name: Puppeteer SW Cache
           command: npm run puppeteer:caching
+      - run:
+          name: Activate Hosting
+          command: npm run firebase:prod:hosting

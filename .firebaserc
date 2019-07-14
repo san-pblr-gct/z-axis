@@ -1,12 +1,16 @@
 {
   "projects": {
-    "default": "jsdrome"
+    "default": "zaxis-next",
+    "test": "zaxis-next"
   },
   "targets": {
-    "jsdrome": {
+    "zaxis-next": {
       "hosting": {
         "prod": [
-          "jsdrome"
+          "z-axis"
+        ],
+        "test": [
+          "z-axis-test"
         ]
       }
     }

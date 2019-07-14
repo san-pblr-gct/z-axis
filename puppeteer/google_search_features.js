@@ -27,8 +27,9 @@ const puppeteer = require('puppeteer');
 const fetch = require('node-fetch');
 const chalk = require('chalk');
 const caniuseDB = require('caniuse-db/data.json').data;
+const { stageUrl } = require('../src/config/variables');
 
-const url = process.env.URL || 'https://www.chromestatus.com/features';
+const url = stageUrl;
 
 const GOOGLE_SEARCH_CHROME_VERSION = process.env.CHROME_VERSION || 41;
 

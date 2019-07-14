@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 /* eslint-disable no-undef */
-import { url } from '../../src/config/variables';
+import { url as mainUrl, stageUrl as url } from '../../src/config/variables';
 import links from '../../src/config/links';
 
 beforeEach(() => {
@@ -22,8 +22,8 @@ describe('My First Test', function () {
     cy.get('meta[name="description"]').should("have.attr", "content", post.description);
     cy.get('meta[property="og:description"]').should("have.attr", "content", post.ogDescription);
     cy.get('meta[property="og:title"]').should("have.attr", "content", post.ogTitle);
-    cy.get('meta[property="og:url"]').should("have.attr", "content", url + '/');
-    cy.get('meta[property="og:image"]').should("have.attr", "content", url + post.ogImage);
+    cy.get('meta[property="og:url"]').should("have.attr", "content", mainUrl + '/');
+    cy.get('meta[property="og:image"]').should("have.attr", "content", mainUrl + post.ogImage);
   })
 });
 
@@ -35,7 +35,7 @@ describe('My First Test', function () {
     cy.get('meta[name="description"]').should("have.attr", "content", post.description);
     cy.get('meta[property="og:description"]').should("have.attr", "content", post.ogDescription);
     cy.get('meta[property="og:title"]').should("have.attr", "content", post.ogTitle);
-    cy.get('meta[property="og:url"]').should("have.attr", "content", url + post.route);
-    cy.get('meta[property="og:image"]').should("have.attr", "content", url + post.ogImage);
+    cy.get('meta[property="og:url"]').should("have.attr", "content", mainUrl + post.route);
+    cy.get('meta[property="og:image"]').should("have.attr", "content", mainUrl + post.ogImage);
   })
 });
