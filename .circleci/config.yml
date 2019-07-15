@@ -1,12 +1,9 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - master
+    working_directory: ~/repo
     docker:
       - image: circleci/node:8-browsers
-    working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
@@ -19,7 +16,30 @@ jobs:
           command: npm install
       - save_cache:
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-          # cache NPM modules and the folder with the Cypress binary
+          paths:
+            - node_modules
+            - ~/.npm
+            - ~/.cache
+      - run:
+          name: Build
+          command: npm run build:prod
+
+  test:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - node_modules
             - ~/.npm
@@ -36,12 +56,66 @@ jobs:
       - run:
           name: Browserstack
           command: npm run browserstack
+
+  stage:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.npm
+            - ~/.cache
+      - run:
+          name: Build
+          command: npm run build:prod && npm run build:server
       - run:
           name: Functions
           command: npm run firebase:stage:functions
       - run:
           name: Stage Hosting
           command: npm run firebase:stage:hosting
+      # - run:
+      #     name: Cypress test
+      #     command: npm run cypress:run
+      # - run:
+      #     name: Puppeteer Coverage
+      #     command: npm run puppeteer:coverage
+      # - run:
+      #     name: Puppeteer SW Cache
+      #     command: npm run puppeteer:caching
+
+  performance:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.npm
+            - ~/.cache
       - run:
           name: Cypress test
           command: npm run cypress:run
@@ -51,6 +125,51 @@ jobs:
       - run:
           name: Puppeteer SW Cache
           command: npm run puppeteer:caching
+
+  activate:
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.npm
+            - ~/.cache
       - run:
           name: Activate Hosting
           command: npm run firebase:prod:hosting
+
+workflows:
+  version: 2
+  build_and_activate:
+    jobs:
+      - build
+      - test
+      - stage:
+          requires:
+            - build
+            - test
+      - performance:
+          requires:
+            - build
+            - test
+            - stage
+      - activate:
+          requires:
+            - build
+            - test
+            - stage
+            - performance
+          filters:
+            branches:
+              only: master
