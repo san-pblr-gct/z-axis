@@ -30,7 +30,9 @@ export default theme => ({
     },
   },
   flex: {
-    // color: '#fff',
+    [theme.breakpoints.down('sm')]: {
+      color: '#fff',
+    },
     cursor: 'pointer',
     flexGrow: 1,
   },
@@ -42,6 +44,6 @@ export default theme => ({
     height: 25,
     width: 25,
     marginRight: 10,
-    // marginLeft: 10,
+    marginLeft: 10,
   },
 });

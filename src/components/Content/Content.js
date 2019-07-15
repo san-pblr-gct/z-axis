@@ -1,5 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
+import ExtensionIcon from '@material-ui/icons/Extension';
+
 import { withStyles } from '@material-ui/core/styles';
 
 import styles from './styles';
@@ -11,6 +13,7 @@ class PaperSheet extends React.Component {
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <ExtensionIcon className={classes.extension} />
         <Paper className={classes.root} elevation={1}>
           {children}
         </Paper>
