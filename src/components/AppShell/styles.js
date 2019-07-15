@@ -9,24 +9,21 @@ export default theme => ({
     backgroundPosition: 'top left, top 60px right',
     backgroundSize: "300px 400px, 100px 500px",
     backgroundRepeat: 'no-repeat',
-    [theme.breakpoints.up('md')]: {
-      backgroundPosition: 'top left 250px, top 60px right',
-    },
   },
   contentWrapper: {
-    margin: 'auto',
-    [theme.breakpoints.up('md')]: {
-      marginLeft: 275,
-    },
+    // [theme.breakpoints.up('md')]: {
+    //   marginLeft: 275,
+    // },
   },
   content: {
     maxWidth: 860,
+    margin: 'auto',
   },
   sidebar: {
   },
   fab: {
     position: 'fixed',
-    bottom: 20,
+    bottom: 40,
     right: 20,
     zIndex: 2002,
   },

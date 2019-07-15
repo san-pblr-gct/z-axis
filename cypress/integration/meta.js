@@ -26,16 +26,3 @@ describe('My First Test', function () {
     cy.get('meta[property="og:image"]').should("have.attr", "content", mainUrl + post.ogImage);
   })
 });
-
-describe('My First Test', function () {
-  it('Visits the Post page', function () {
-    const post = links[1].links[0];
-    cy.visit(url + post.route);
-    cy.title().should('eq', post.title)
-    cy.get('meta[name="description"]').should("have.attr", "content", post.description);
-    cy.get('meta[property="og:description"]').should("have.attr", "content", post.ogDescription);
-    cy.get('meta[property="og:title"]').should("have.attr", "content", post.ogTitle);
-    cy.get('meta[property="og:url"]').should("have.attr", "content", mainUrl + post.route);
-    cy.get('meta[property="og:image"]').should("have.attr", "content", mainUrl + post.ogImage);
-  })
-});

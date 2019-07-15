@@ -127,7 +127,6 @@ workflows:
       - test
       - performance:
           requires:
-            - build
             - test
       - activate:
           requires:

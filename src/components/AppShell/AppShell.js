@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 import Fab from '@material-ui/core/Fab';
 import ShareIcon from '@material-ui/icons/Share';
 import classNames from 'classnames';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import Navbar from '../Navbar/Navbar';
-import Sidebar from '../Sidebar/Sidebar';
-import RightSidebar from '../RightSidebar/RightSidebar';
-import SidebarContent from '../SidebarContent/SidebarContent';
-// import Footer from '../Footer/Footer';
+// import RightSidebar from '../RightSidebar/RightSidebar';
+// import Sidebar from '../Sidebar/Sidebar';
+// import SidebarContent from '../SidebarContent/SidebarContent';
+import Footer from '../Footer/Footer';
 // import RightSidebarContent from '../SidebarContent/RightSidebarContent';
 
 import styles from './styles';
@@ -20,7 +20,6 @@ const { title: mainTitle, description: mainDescription } = require('../../config
 
 class App extends Component {
   state = {
-    drawerOpen: false,
     activeTab: '0',
   };
   handleDrawerToggle() {
@@ -44,27 +43,17 @@ class App extends Component {
   }
   render() {
     const { classes, children } = this.props;
-    const { drawerOpen } = this.state;
+    const { activeTab } = this.state;
 
     return <div>
       <noscript><ErrorMessage variant={'error'} message={"Please enable Javascript to continue."} /></noscript>
       <Navbar title={mainTitle} description={mainDescription} onNavbarMenuClick={this.handleDrawerToggle.bind(this)} onNavbarTitleClick={this.handleNavbarTitleClick.bind(this)} />
-      <Sidebar drawerOpen={drawerOpen} handleDrawerToggle={this.handleDrawerToggle.bind(this)}>
-        <SidebarContent onLinkClick={this.handleSidebarLinkClick.bind(this)}/>
-      </Sidebar>
       <div className={classes.app}>
         <div className={classes.contentWrapper}>
           <Grid container spacing={0}>
             <Grid item xs={12} lg={9} className={classes.content}>
               {children}
             </Grid>
-            <Hidden mdDown implementation="css">
-              <Grid item className={classes.sidebar}>
-                <RightSidebar>
-                  {/* <RightSidebarContent /> */}
-                </RightSidebar>
-              </Grid>
-            </Hidden>
           </Grid>
         </div>
       </div>
@@ -72,7 +61,7 @@ class App extends Component {
         <span className="hidden-accessiiblity">Share</span>
         <ShareIcon />
       </Fab>
-      {/* <Footer handleTabChange={this.handleTabChange.bind(this)} activeTab={activeTab} /> */}
+      <Footer handleTabChange={this.handleTabChange.bind(this)} activeTab={activeTab} />
     </div>;
   }
 }

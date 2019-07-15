@@ -4,9 +4,12 @@ export default theme => ({
     position: 'fixed',
     bottom: 0,
     zIndex: 2001,
-    borderTop: 'solid 1px ' + theme.background.primary,
     [theme.breakpoints.down('sm')]: {
       zIndex: 2,
     },
+    background: 'transparent',
+  },
+  icon: {
+    color: 'white',
   },
 })

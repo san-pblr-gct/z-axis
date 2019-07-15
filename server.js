@@ -11,7 +11,9 @@ import moment from 'moment';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';
 import AppShell from './src/components/AppShell/AppShell';
-import Page from './src/components/Page/Page';
+import Home from './src/components/Pages/Home';
+import Clue from './src/components/Pages/Clue';
+import Rules from './src/components/Pages/Rules';
 
 import theme from './src/config/theme';
 import store from './src/data/store';
@@ -41,8 +43,9 @@ app.get('**', (req, res) => {
             <ReduxProvider store={store}>
               <AppShell>
                 <Switch>
-                  <Route exact path="/post/:folder/:subfolder/:post" component={Page} />
-                  <Route path="/" component={Page} />
+                  <Route exact path="/clue" component={Clue} />
+                  <Route exact path="/rules" component={Rules} />
+                  <Route path="/" component={Home} />
                 </Switch>
               </AppShell>
             </ReduxProvider>
