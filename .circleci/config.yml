@@ -22,7 +22,13 @@ jobs:
             - ~/.cache
       - run:
           name: Build
-          command: npm run build:prod
+          command: npm run build:prod && npm run build:server
+      - run:
+          name: Functions
+          command: npm run firebase:stage:functions
+      - run:
+          name: Stage Hosting
+          command: npm run firebase:stage:hosting
 
   test:
     working_directory: ~/repo
@@ -56,45 +62,6 @@ jobs:
       - run:
           name: Browserstack
           command: npm run browserstack
-
-  stage:
-    working_directory: ~/repo
-    docker:
-      - image: circleci/node:8-browsers
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-            - v1-deps-{{ .Branch }}
-            - v1-deps
-      - run:
-          name: Install dependencies
-          command: npm install
-      - save_cache:
-          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-            - ~/.npm
-            - ~/.cache
-      - run:
-          name: Build
-          command: npm run build:prod && npm run build:server
-      - run:
-          name: Functions
-          command: npm run firebase:stage:functions
-      - run:
-          name: Stage Hosting
-          command: npm run firebase:stage:hosting
-      # - run:
-      #     name: Cypress test
-      #     command: npm run cypress:run
-      # - run:
-      #     name: Puppeteer Coverage
-      #     command: npm run puppeteer:coverage
-      # - run:
-      #     name: Puppeteer SW Cache
-      #     command: npm run puppeteer:caching
 
   performance:
     working_directory: ~/repo
@@ -155,10 +122,6 @@ workflows:
     jobs:
       - build
       - test
-      - stage:
-          requires:
-            - build
-            - test
       - performance:
           requires:
             - build
