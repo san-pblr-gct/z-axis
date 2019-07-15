@@ -92,6 +92,9 @@ jobs:
       - run:
           name: Puppeteer SW Cache
           command: npm run puppeteer:caching
+      - run:
+          name: Lighthouse
+          command: npm run lh -- https://z-axis-test.web.app
 
   activate:
     docker:

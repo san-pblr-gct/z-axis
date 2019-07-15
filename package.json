@@ -25,6 +25,7 @@
     "puppeteer:caching": "node puppeteer/verify_sw_caching",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --record --key $CYPRESS_TOKEN",
+    "lighthouse": "lighthousebot",
     "clean": "rimraf _dist _test _docs .firebase ./*.log node_modules"
   },
   "repository": {
@@ -74,6 +75,7 @@
     "karma-mocha-reporter": "^2.2.5",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^4.0.2",
+    "lighthousebot": "git+https://github.com/GoogleChromeLabs/lighthousebot.git",
     "mini-css-extract-plugin": "^0.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "path": "^0.12.7",
