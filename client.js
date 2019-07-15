@@ -20,6 +20,8 @@ import './assets/site/logo-192.png';
 import './assets/site/logo-512.png';
 import './assets/site/og_image.jpg';
 import './assets/site/og_image_2.jpg';
+import './assets/site/bg.jpg';
+import './assets/site/bg2.jpg';
 
 function Main() {
   React.useEffect(() => {

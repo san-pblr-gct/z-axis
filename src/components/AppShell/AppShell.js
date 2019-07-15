@@ -10,8 +10,8 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import RightSidebar from '../RightSidebar/RightSidebar';
-import Footer from '../Footer/Footer';
 import SidebarContent from '../SidebarContent/SidebarContent';
+// import Footer from '../Footer/Footer';
 // import RightSidebarContent from '../SidebarContent/RightSidebarContent';
 
 import styles from './styles';
@@ -44,7 +44,7 @@ class App extends Component {
   }
   render() {
     const { classes, children } = this.props;
-    const { drawerOpen, activeTab } = this.state;
+    const { drawerOpen } = this.state;
 
     return <div>
       <noscript><ErrorMessage variant={'error'} message={"Please enable Javascript to continue."} /></noscript>
@@ -72,7 +72,7 @@ class App extends Component {
         <span className="hidden-accessiiblity">Share</span>
         <ShareIcon />
       </Fab>
-      <Footer handleTabChange={this.handleTabChange.bind(this)} activeTab={activeTab} />
+      {/* <Footer handleTabChange={this.handleTabChange.bind(this)} activeTab={activeTab} /> */}
     </div>;
   }
 }

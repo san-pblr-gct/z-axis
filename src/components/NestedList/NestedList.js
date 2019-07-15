@@ -28,7 +28,7 @@ class NestedList extends React.Component {
     return (
       <List component="div" className={classes.list}>
         <ListItem button onClick={() => this.handleClick()}>
-          <ListItemText primary={title} />
+          <ListItemText primary={title} className={classes.listItemText} />
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>

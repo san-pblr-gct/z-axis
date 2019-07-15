@@ -4,8 +4,14 @@ export default theme => ({
     position: 'relative',
     width: '100%',
     minHeight: '100vh',
-    background: theme.background.primary,
     color: '#333',
+    background: "url('/img/bg.jpg'), url('/img/bg2.jpg') #000",
+    backgroundPosition: 'top left, top 60px right',
+    backgroundSize: "300px 400px, 100px 500px",
+    backgroundRepeat: 'no-repeat',
+    [theme.breakpoints.up('md')]: {
+      backgroundPosition: 'top left 250px, top 60px right',
+    },
   },
   contentWrapper: {
     margin: 'auto',

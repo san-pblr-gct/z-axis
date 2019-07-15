@@ -1,10 +1,10 @@
 const links = require('../config/links');
 
-const shortName = 'Z-axis';
-const title = 'Z-axis';
+const shortName = 'Z Axis';
+const title = 'Z Axis';
 const author = 'Sreeram Padmanabhan';
 const themeColor = '#ffffff';
-const description = 'Online Treasure hunt';
+const description = 'Think out of the box.';
 const shortDescription = 'Web Artist';
 const domain = 'https://z-axis.web.app';
 

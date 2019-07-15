@@ -9,7 +9,7 @@ export default theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: 8,
+    padding: 10,
     [theme.breakpoints.up('md')]: {
       padding: 20,
     },
