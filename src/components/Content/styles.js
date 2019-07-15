@@ -16,7 +16,7 @@ export default theme => ({
     marginBottom: 60,
   },
   toolbar: {
-    height: 50,
+    height: 40,
   },
   extension: {
     height: 24,
