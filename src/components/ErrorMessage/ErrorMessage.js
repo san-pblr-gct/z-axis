@@ -47,15 +47,20 @@ const styles1 = theme => ({
     display: 'flex',
     alignItems: 'center',
   },
+  snackbar: {
+    paddingTop: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 2,
+  },
 });
 
 function MySnackbarContent(props) {
-  const { classes, className, message, onClose, variant, ...other } = props;
+  const { classes, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
-
   return (
     <SnackbarContent
-      className={classNames(classes[variant], className)}
+      className={classNames(classes[variant], classes.snackbar)}
       aria-describedby="client-snackbar"
       message={
         <span id="client-snackbar" className={classes.message}>
