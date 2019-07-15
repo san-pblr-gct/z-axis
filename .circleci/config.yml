@@ -126,12 +126,10 @@ workflows:
           requires:
             - build
             - test
-            - stage
       - activate:
           requires:
             - build
             - test
-            - stage
             - performance
           filters:
             branches:
