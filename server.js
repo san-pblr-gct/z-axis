@@ -5,15 +5,12 @@ import React from 'react';
 import fs from 'fs';
 import ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
-import { StaticRouter as Router, Route, Switch } from 'react-router-dom';
+import { StaticRouter as Router } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import moment from 'moment';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';
 import AppShell from './src/components/AppShell/AppShell';
-import Home from './src/components/Pages/Home';
-import Clue from './src/components/Pages/Clue';
-import Rules from './src/components/Pages/Rules';
 
 import theme from './src/config/theme';
 import store from './src/data/store';
@@ -41,13 +38,7 @@ app.get('**', (req, res) => {
         <Router location={req.url} context={{}}>
           <ErrorBoundary>
             <ReduxProvider store={store}>
-              <AppShell>
-                <Switch>
-                  <Route exact path="/clue" component={Clue} />
-                  <Route exact path="/rules" component={Rules} />
-                  <Route path="/" component={Home} />
-                </Switch>
-              </AppShell>
+              <AppShell />
             </ReduxProvider>
           </ErrorBoundary>
         </Router>
