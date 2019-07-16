@@ -3,10 +3,10 @@ module.exports = [
     title: 'Home',
     links: [
       {
-        title: 'Home',
-        ogTitle: 'Home og title',
-        description: 'home description',
-        ogDescription: 'home og description',
+        title: 'Z Axis | Online Treasure Hunt',
+        ogTitle: 'Z Axis | Online Treasure Hunt',
+        description: 'Do you think outside the box?',
+        ogDescription: 'Z Axis is an Online Treasure Hunt App which will give you an online experience of a traditional treasure hunt. Your goal is to solve all the crypts.',
         ogImage: '/img/og_image.jpg',
         route: '/post/home/home/home',
       },
