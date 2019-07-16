@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { render } from 'react-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -6,9 +6,11 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';
 import AppShell from './src/components/AppShell/AppShell';
-import Home from './src/components/Pages/Home';
-import Clue from './src/components/Pages/Clue';
-import Rules from './src/components/Pages/Rules';
+import FullpageLoader from './src/components/FullpageLoader/FullpageLoader';
+
+const Home = lazy(() => import('./src/components/Pages/Home'));
+const Clue = lazy(() => import('./src/components/Pages/Clue'));
+const Rules = lazy(() => import('./src/components/Pages/Rules'));
 
 import './src/utils/webShare';
 
@@ -38,11 +40,13 @@ function Main() {
         <ErrorBoundary>
           <ReduxProvider store={store}>
             <AppShell>
-              <Switch>
-                <Route exact path="/clue" component={Clue} />
-                <Route exact path="/rules" component={Rules} />
-                <Route path="/" component={Home} />
-              </Switch>
+              <Suspense fallback={<FullpageLoader />}>
+                <Switch>
+                  <Route exact path="/clue" component={Clue} />
+                  <Route exact path="/rules" component={Rules} />
+                  <Route path="/" component={Home} />
+                </Switch>
+              </Suspense>
             </AppShell>
           </ReduxProvider>
         </ErrorBoundary>
