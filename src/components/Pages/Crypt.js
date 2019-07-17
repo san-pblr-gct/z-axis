@@ -14,7 +14,7 @@ class Page extends Component {
     const { classes } = this.props;
     return <Content>
       <CryptIcon className={classes.homeIcon} />
-      <Typography variant="overline">Home</Typography>
+      <Typography variant="overline">Crypt</Typography>
     </Content>;
   }
 }

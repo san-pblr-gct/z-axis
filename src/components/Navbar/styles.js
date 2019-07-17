@@ -2,7 +2,7 @@ export default theme => ({
   appBar: {
     // eslint-disable-next-line no-magic-numbers
     zIndex: theme.zIndex.drawer + 1,
-    background: 'transparent',
+    background: 'black',
   },
   menuButton: {
     cursor: 'pointer',

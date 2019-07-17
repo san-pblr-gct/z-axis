@@ -6,7 +6,7 @@ export default theme => ({
     minHeight: '100vh',
     color: '#333',
     background: "url('/img/bg.jpg'), url('/img/bg2.jpg') #000",
-    backgroundPosition: 'top left, top 60px right',
+    backgroundPosition: 'top 40px left, top 60px right',
     backgroundSize: "300px 400px, 100px 500px",
     backgroundRepeat: 'no-repeat',
   },

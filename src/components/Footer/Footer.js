@@ -24,7 +24,7 @@ class LabelBottomNavigation extends React.Component {
     const { value } = this.state;
     return (
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.footer}>
-        <Link to="/"><BottomNavigationAction label="" value={'0'} icon={<CryptIcon className={classes.icon} />} /></Link>
+        <Link to="/crypt"><BottomNavigationAction label="" value={'0'} icon={<CryptIcon className={classes.icon} />} /></Link>
         <Link to="/clue"><BottomNavigationAction label="" value={'1'} icon={<ClueIcon className={classes.icon} />} /></Link>
         <Link to="/rules"><BottomNavigationAction label="" value={'1'} icon={<RulesIcon className={classes.icon} />} /></Link>
       </BottomNavigation>
