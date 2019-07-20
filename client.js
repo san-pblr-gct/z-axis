@@ -1,14 +1,13 @@
 import React, { Suspense, lazy } from 'react';
 import { render } from 'react-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { MemoryRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';
 import AppShell from './src/components/AppShell/AppShell';
 import FullpageLoader from './src/components/FullpageLoader/FullpageLoader';
 
-const Login = lazy(() => import('./src/components/Pages/Login'));
 const Crypt = lazy(() => import('./src/components/Pages/Crypt'));
 const Clue = lazy(() => import('./src/components/Pages/Clue'));
 const Rules = lazy(() => import('./src/components/Pages/Rules'));
@@ -40,16 +39,16 @@ function Main() {
       <Router>
         <ErrorBoundary>
           <ReduxProvider store={store}>
-            <AppShell>
-              <Suspense fallback={<FullpageLoader />}>
-                <Switch>
+            <Suspense fallback={<FullpageLoader />}>
+              <Switch>
+                <AppShell>
+                  <Redirect path="/" to="/crypt" />
                   <Route exact path="/crypt" component={Crypt} />
                   <Route exact path="/clue" component={Clue} />
                   <Route exact path="/rules" component={Rules} />
-                  <Route path="/" component={Login} />
-                </Switch>
-              </Suspense>
-            </AppShell>
+                </AppShell>
+              </Switch>
+            </Suspense>
           </ReduxProvider>
         </ErrorBoundary>
       </Router>

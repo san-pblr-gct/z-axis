@@ -11,7 +11,7 @@ import { getContent } from '../../data/app/appActions';
 class Page extends Component {
   render() {
     return <Content>
-      <Typography variant="overline">Login</Typography>
+      <Typography variant="overline">Home</Typography>
     </Content>;
   }
 }
