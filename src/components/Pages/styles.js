@@ -17,9 +17,9 @@ export default () => ({
     height: 24,
     width: 24,
     color: '#fff',
-    float: 'right',
+    float: 'left',
     padding: 10,
-    marginTop: -24,
+    // marginTop: -5,
     borderRadius: 3,
     backgroundColor: '#999',
     background: "linear-gradient(60deg, #26c6da, #00acc1)",
@@ -41,7 +41,11 @@ export default () => ({
     textAlign: 'center',
     margin: 20,
   },
-  pageTitle: {
+  pageTitle1: {
     marginLeft: 10,
+  },
+  pageTitle: {
+    marginLeft: 60,
+    marginTop: 20,
   },
 });

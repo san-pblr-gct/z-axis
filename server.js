@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 require('ignore-styles');
 import * as functions from 'firebase-functions';
 import express from 'express';
@@ -22,12 +23,11 @@ const { themeColor, author, seo: { keywords }, og: { ogImageAlt, ogType, ogFbApp
 const template = fs.readFileSync('./templates/server.html', 'utf8');
 const app = express();
 
-app.get('/data', (req, res) => {
-  const { folder, subfolder, post } = req.query;
-  var file = fs.readFileSync(`./posts/${folder}/${subfolder}/${post}.md`, 'utf8');
-  res.set('Content-type', 'text/plain');
-  // eslint-disable-next-line global-require
-  res.send(file.toString());
+app.get('/paymentsuccess', (req, res) => {
+  if(req.body.STATUS && req.body.STATUS === 'TXN_SUCCESS' && req.body.MID === 'lzSXOq48634307639622') {
+    return res.redirect(302, '/?payment=true');
+  }
+  return res.redirect(302, '/?payment=false');
 });
 
 app.get('**', (req, res) => {

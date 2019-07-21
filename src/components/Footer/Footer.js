@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CryptIcon from '@material-ui/icons/Extension';
-import ClueIcon from '@material-ui/icons/Widgets';
+// import ClueIcon from '@material-ui/icons/Widgets';
 import RulesIcon from '@material-ui/icons/LiveHelp';
 import { Link } from 'react-router-dom';
 
@@ -14,8 +14,8 @@ class LabelBottomNavigation extends React.Component {
     const { classes } = this.props;
     return (
       <BottomNavigation className={classes.footer}>
-        <Link to="/crypt"><BottomNavigationAction label="" value={'0'} icon={<CryptIcon className={classes.icon} />} /></Link>
-        <Link to="/clue"><BottomNavigationAction label="" value={'1'} icon={<ClueIcon className={classes.icon} />} /></Link>
+        <Link to="/"><BottomNavigationAction label="" value={'0'} icon={<CryptIcon className={classes.icon} />} /></Link>
+        {/* <Link to="/clue"><BottomNavigationAction label="" value={'1'} icon={<ClueIcon className={classes.icon} />} /></Link> */}
         <Link to="/rules"><BottomNavigationAction label="" value={'1'} icon={<RulesIcon className={classes.icon} />} /></Link>
       </BottomNavigation>
     );

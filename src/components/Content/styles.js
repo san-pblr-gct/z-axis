@@ -13,7 +13,7 @@ export default theme => ({
     [theme.breakpoints.up('md')]: {
       padding: 20,
     },
-    marginBottom: 60,
+    // marginBottom: 60,
   },
   toolbar: {
     height: 40,

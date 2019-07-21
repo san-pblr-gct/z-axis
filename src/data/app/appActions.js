@@ -1,6 +1,7 @@
 /* eslint-disable no-magic-numbers */
 import { createAction } from '../../utils/helpers';
 import 'isomorphic-fetch';
+import md5 from 'md5';
 import AsyncStorage from '@callstack/async-storage';
 import questions from './questions';
 
@@ -18,14 +19,14 @@ export const setError = createAction(SET_ERROR);
 export const setAnswerErrorAction = createAction(SET_ANSWER_ERROR);
 
 export const getQuestion = () => async (dispatch) => {
-  let currentLevel = await getCurrentLevel();
-  if(!currentLevel) currentLevel = 1;
+  const currentLevel = await getCurrentLevel();
+  const currentClues = await getCurrentClues();
+
   const { question, answer, clues } = questions[currentLevel];
   dispatch([
     setQuestion(question),
     setAnswer(answer),
-    setClues(clues),
-    setError(false),
+    setClues(clues.slice(0, currentClues)),
   ]);
 };
 
@@ -38,22 +39,77 @@ export const setAnswerError = (msg, type = 'error') => dispatch => {
 };
 
 export const getCurrentLevel = async () => {
-  let level;
   try {
-    level = await AsyncStorage.getItem('level');
+    const level = await AsyncStorage.getItem('level');
+    return level ? +level : 1;
   }
   catch {
     return 1;
   }
-  return level ? +level : 1;
+};
+
+export const getCurrentClues = async () => {
+  try {
+    const clues = await AsyncStorage.getItem('clues');
+    return +clues;
+  }
+  catch {
+    return 0;
+  }
 };
 
 export const updateUserLevel = () => async dispatch => {
   try {
     const currentLevel = await getCurrentLevel();
     await AsyncStorage.setItem('level', currentLevel + 1);
+    await AsyncStorage.setItem('clues', 0);
     dispatch(getQuestion());
   } catch {
     return false;
   }
 }
+
+export const revealClues = async () => {
+  try {
+    await AsyncStorage.setItem('clues', 2);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+export const checkPayment = () => async dispatch => {
+  const paymentMade = getParameterByName('payment');
+  if (paymentMade) {
+    if(paymentMade === 'true') {
+      if (await revealClues()) {
+        dispatch([
+          setAnswerError('Payment Success!', 'success'),
+          getQuestion(),
+        ]);
+      }
+    } else if (paymentMade === 'false') {
+      dispatch(setAnswerError('Payment Failure!', 'error'));
+    }
+    window.history.replaceState(null, null, window.location.pathname);
+  }
+};
+
+export const checkAnswer = givenAnswer => (dispatch, getState) => {
+  const { app: { answer } } = getState();
+  if (md5(givenAnswer.toLowerCase()) === answer) {
+    dispatch(updateUserLevel());
+  } else {
+    dispatch(setAnswerError('Wrong answer. Try again!', 'error'));
+  }
+}
+
+export const getParameterByName = (name, url) => {
+  if (!url) url = window.location.href;
+  name = name.replace(/[[\]]/g, '\\$&');
+  let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+  const results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+};

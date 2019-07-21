@@ -1,30 +1,27 @@
+/* eslint-disable no-magic-numbers */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import md5 from 'md5';
 import Typography from '@material-ui/core/Typography';
 import CryptIcon from '@material-ui/icons/Extension';
 import { withStyles } from '@material-ui/core/styles';
 
 import Content from '../Content/Content';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Clues from './Clue';
 import styles from './styles';
 
-import { getQuestion, setAnswerError, updateUserLevel } from '../../data/app/appActions';
+import { getQuestion, setAnswerError, updateUserLevel, checkPayment, checkAnswer } from '../../data/app/appActions';
 import Answer from './Answer';
 
 class Page extends Component {
   componentDidMount() {
-    const { getQuestion } = this.props;
+    const { getQuestion, checkPayment } = this.props;
     getQuestion();
+    checkPayment();
   }
   handleAnswerSubmit(givenAnswer) {
-    /* eslint-disable no-magic-numbers */
-    const { app: { answer }, setAnswerError, updateUserLevel } = this.props;
-    if (md5(givenAnswer.toLowerCase()) === answer) {
-      updateUserLevel();
-    } else {
-      setAnswerError('Wrong answer. Try again!', 'error');
-    }
+    const { checkAnswer } = this.props;
+    checkAnswer(givenAnswer);
   }
   handleErrorClose() {
     const { setAnswerError } = this.props;
@@ -36,9 +33,10 @@ class Page extends Component {
       {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)}/>}
       <Content>
         <CryptIcon className={classes.homeIcon} />
-        <Typography className={classes.pageTitle} variant="overline">Crypt</Typography>
+        <Typography className={classes.pageTitle1} variant="overline">Crypt</Typography>
         <Typography variant="h6" className={classes.question}>{question}</Typography>
-        <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} />
+        <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} helperText={''}/>
+        <Clues />
       </Content>
     </React.Fragment>;
   }
@@ -49,6 +47,8 @@ const mapDispatchToProps = dispatch => ({
   getQuestion: () => dispatch(getQuestion()),
   setAnswerError: (msg, type) => dispatch(setAnswerError(msg, type)),
   updateUserLevel: () => dispatch(updateUserLevel()),
+  checkPayment: () => dispatch(checkPayment()),
+  checkAnswer: givenAnswer => dispatch(checkAnswer(givenAnswer)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Page));

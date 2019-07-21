@@ -1,19 +1,26 @@
+/* eslint-disable no-magic-numbers */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import ClueIcon from '@material-ui/icons/Widgets';
 import { withStyles } from '@material-ui/core/styles';
 
-import Content from '../Content/Content';
+import PaytmButton from '../PayButton/PayButton';
 import styles from './styles';
-
 class Page extends Component {
+  getClues() {
+    const { app: { clues } } = this.props;
+    if(!clues.length) return <PaytmButton amount={9} />;
+    return clues.map((clue, i) => <Typography variant="subtitle2" key={i}>{i+1}: <i>{clue}</i></Typography>);
+  }
   render() {
     const { classes } = this.props;
-    return <Content>
+    return <React.Fragment>
       <ClueIcon className={classes.clueIcon} />
-      <Typography variant="overline">Clue</Typography>
-    </Content>;
+      <div className={classes.pageTitle}>
+        {this.getClues()}
+      </div>
+    </React.Fragment>;
   }
 }
 

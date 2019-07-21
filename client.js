@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { render } from 'react-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';
@@ -42,8 +42,7 @@ function Main() {
             <Suspense fallback={<FullpageLoader />}>
               <Switch>
                 <AppShell>
-                  <Redirect path="/" to="/crypt" />
-                  <Route exact path="/crypt" component={Crypt} />
+                  <Route exact path="/" component={Crypt} />
                   <Route exact path="/clue" component={Clue} />
                   <Route exact path="/rules" component={Rules} />
                 </AppShell>
