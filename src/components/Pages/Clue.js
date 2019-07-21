@@ -15,12 +15,12 @@ class Page extends Component {
   }
   render() {
     const { classes } = this.props;
-    return <React.Fragment>
+    return <div style={{ marginTop: 20 }}>
       <ClueIcon className={classes.clueIcon} />
       <div className={classes.pageTitle}>
         {this.getClues()}
       </div>
-    </React.Fragment>;
+    </div>;
   }
 }
 
