@@ -13,7 +13,7 @@ module.exports = merge(commonConfig, {
     hot: true,
     historyApiFallback: true,
     proxy: {
-      '/data': 'http://localhost:5000',
+      '/question': 'http://localhost:5000',
     },
   },
   devtool: 'inline-source-map',

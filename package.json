@@ -100,6 +100,7 @@
   "dependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/polyfill": "^7.4.4",
+    "@callstack/async-storage": "^2.0.3",
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^4.0.1",
     "classnames": "^2.2.6",
@@ -107,6 +108,7 @@
     "ignore-styles": "^5.0.1",
     "isomorphic-fetch": "^2.2.1",
     "markdown-to-jsx": "^6.10.2",
+    "md5": "^2.2.1",
     "moment": "^2.24.0",
     "object-path-immutable": "^3.0.2",
     "react": "^16.8.6",

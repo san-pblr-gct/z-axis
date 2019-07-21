@@ -7,8 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Content from '../Content/Content';
 import styles from './styles';
 
-import { getContent } from '../../data/app/appActions';
-
 class Page extends Component {
   render() {
     const { classes } = this.props;
@@ -20,8 +18,8 @@ class Page extends Component {
 }
 
 const mapStateToProps = state => state;
+// eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = dispatch => ({
-  getContent: (folder, subfolder, post) => dispatch(getContent(folder, subfolder, post)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Page));

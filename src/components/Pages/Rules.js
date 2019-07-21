@@ -27,11 +27,11 @@ class Rules extends Component {
       <Typography variant="overline">Rules</Typography>
       <List dense>
         <MyListItem primary="This is not your everyday quiz! This is an Online Treasure Hunt. " />
-        <MyListItem primary="This hunt consists of 30 levels. Each level contains a crypt/task/puzzle, solving which you will get the answer to the next level." secondary="And the goal is to solve all the levels." />
+        <MyListItem primary="This hunt consists of 100 levels. Each level contains a crypt/task/puzzle, solving which you will get the answer to the next level." secondary="And the goal is to solve all the levels." />
         <MyListItem primary="All answers are lowercase strings with only alphabets/numbers." secondary="And that means no spaces or special characters." />
         <MyListItem primary="There are 2 clues every level." secondary="Look out for hidden clues apart from the given clues." />
         <MyListItem primary="We might also put clues in facebook or instagram or maybe even as push notifications." />
-        <MyListItem primary="A Leaderboard shows who is on top based on a first come first serve basis." secondary="Good Luck!" />
+        {/* <MyListItem primary="A Leaderboard shows who is on top based on a first come first serve basis." secondary="Good Luck!" /> */}
         <MyListItem secondary={<span style={{ float: 'right', fontStyle: 'italic' }}><Instagram /> zaxisapp <Facebook /> zaxisapp</span>} />
       </List></Content>
   }

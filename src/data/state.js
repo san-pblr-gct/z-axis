@@ -1,6 +1,7 @@
 export default {
   app: {
-    content: {},
-    error: false,
+    question: '',
+    answer: '',
+    error: null,
   },
 };

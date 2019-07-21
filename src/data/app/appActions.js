@@ -1,27 +1,59 @@
+/* eslint-disable no-magic-numbers */
 import { createAction } from '../../utils/helpers';
-require('isomorphic-fetch');
+import 'isomorphic-fetch';
+import AsyncStorage from '@callstack/async-storage';
+import questions from './questions';
 
-export const SET_CONTENT = 'APP::CONTENT';
+export const SET_QUESTION = 'APP::QUESTION';
+export const SET_ANSWER = 'APP::ANSWER';
+export const SET_CLUES = 'APP::CLUES';
 export const SET_ERROR = 'APP::ERROR';
+export const SET_ANSWER_ERROR = 'APP::ANSWER_ERROR';
+export const UPDATE_USER_LEVEL = 'APP::UPDATE_USER_LEVEL';
 
-export const setContent = createAction(SET_CONTENT);
+export const setQuestion = createAction(SET_QUESTION);
+export const setAnswer = createAction(SET_ANSWER);
+export const setClues = createAction(SET_CLUES);
 export const setError = createAction(SET_ERROR);
+export const setAnswerErrorAction = createAction(SET_ANSWER_ERROR);
 
-export const getContent = (folder = 'home', subfolder = 'home', post = 'home') => (dispatch, getState) => {
-  const { app: { content } } = getState();
-
-  if (content[`${folder}/${subfolder}/${post}`]) return;
-
-  fetch(`/data?folder=${folder}&subfolder=${subfolder}&post=${post}`)
-    .then(response => response.text())
-    .then(text => {
-      content[`${folder}/${subfolder}/${post}`] = text;
-      dispatch([
-        setContent(content),
-        setError(false),
-      ]);
-    })
-    .catch(() => {
-      dispatch(setError(true));
-    });
+export const getQuestion = () => async (dispatch) => {
+  let currentLevel = await getCurrentLevel();
+  if(!currentLevel) currentLevel = 1;
+  const { question, answer, clues } = questions[currentLevel];
+  dispatch([
+    setQuestion(question),
+    setAnswer(answer),
+    setClues(clues),
+    setError(false),
+  ]);
 };
+
+export const setAnswerError = (msg, type = 'error') => dispatch => {
+  dispatch(setAnswerErrorAction({
+    message: msg,
+    time: new Date().getTime(),
+    type,
+  }));
+};
+
+export const getCurrentLevel = async () => {
+  let level;
+  try {
+    level = await AsyncStorage.getItem('level');
+  }
+  catch {
+    return 1;
+  }
+  return level ? +level : 1;
+};
+
+export const updateUserLevel = () => async dispatch => {
+  try {
+    const currentLevel = await getCurrentLevel();
+    await AsyncStorage.setItem('level', currentLevel + 1);
+    dispatch(getQuestion());
+  } catch {
+    return false;
+  }
+}
