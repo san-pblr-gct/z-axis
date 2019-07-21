@@ -27,15 +27,16 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post('/paymentsuccess', (req, res) => {
-  if(req.body.STATUS && req.body.STATUS === 'TXN_SUCCESS' && req.body.MID === 'lzSXOq48634307639622') {
+app.post('/paymentprocess', (req, res) => {
+  if(req.body.STATUS && req.body.STATUS === 'TXN_SUCCESS') {
     return res.redirect(302, '/?payment=true');
   }
   return res.redirect(302, '/?payment=false');
 });
 
 app.post('/checksum', (req, res) => {
-  const key = 'qvXqT6z5tSKDjWXh';
+  // const key = 'qvXqT6z5tSKDjWXh';
+  const key = 'qWzN4AATjzd8pRPC'; // test
   genchecksum(req.body, key, cs => res.send(cs));
 });
 

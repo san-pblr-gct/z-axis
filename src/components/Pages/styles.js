@@ -45,7 +45,6 @@ export default () => ({
     marginLeft: 10,
   },
   pageTitle: {
-    marginLeft: 54,
     marginTop: 20,
   },
 });

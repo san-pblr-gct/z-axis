@@ -18,7 +18,7 @@ export const setAnswer = createAction(SET_ANSWER);
 export const setClues = createAction(SET_CLUES);
 export const setError = createAction(SET_ERROR);
 export const setChecksum = createAction(SET_CHECKSUM);
-export const setAnswerErrorAction = createAction(SET_ANSWER_ERROR);
+// export const setAnswerErrorAction = createAction(SET_ANSWER_ERROR);
 
 export const getQuestion = () => async (dispatch) => {
   const currentLevel = await getCurrentLevel();
@@ -33,9 +33,8 @@ export const getQuestion = () => async (dispatch) => {
 };
 
 export const setAnswerError = (msg, type = 'error') => dispatch => {
-  dispatch(setAnswerErrorAction({
+  dispatch(setError({
     message: msg,
-    time: new Date().getTime(),
     type,
   }));
 };
@@ -53,7 +52,7 @@ export const getCurrentLevel = async () => {
 export const getCurrentClues = async () => {
   try {
     const clues = await AsyncStorage.getItem('clues');
-    return +clues;
+    return clues ? +clues : 0;
   }
   catch {
     return 0;
@@ -85,10 +84,7 @@ export const checkPayment = () => async dispatch => {
   if (paymentMade) {
     if (paymentMade === 'true') {
       if (await revealClues()) {
-        dispatch([
-          setAnswerError('Payment Success!', 'success'),
-          getQuestion(),
-        ]);
+        dispatch(setAnswerError('Payment Success!', 'success'));
       }
     } else if (paymentMade === 'false') {
       dispatch(setAnswerError('Payment Failure!', 'error'));
@@ -124,14 +120,19 @@ export const getCheckSum = (body = {}) => dispatch => {
       'Content-Type': 'application/json',
     },
   })
-    .then(response => response.text())
+    .then(response => {
+      if(response.ok) return response.text();
+      throw new Error('Network response was not ok.');
+    })
     .then(text => {
       dispatch([
         setChecksum(text),
-        setError(false),
       ]);
     })
     .catch(() => {
-      dispatch(setError(true));
+      dispatch(setError({
+        message: 'Techincal error! Clues not enabled.',
+        type: 'warning',
+      }));
     });
 }

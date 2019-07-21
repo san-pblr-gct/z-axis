@@ -12,19 +12,24 @@ class Paytmbutton extends Component {
     });
   }
   render() {
-    return <form style={{ marginBottom: 0 }} className="form-control" action={`https://securegw.paytm.in/theia/processTransaction?ORDER_ID=${this.props.orderId}`} name="f1" method="POST">
-      <input type="hidden" name="MID" value={this.props.merchantId} />
-      <input type="hidden" name="WEBSITE" value={this.props.website} />
-      <input type="hidden" name="INDUSTRY_TYPE_ID" value={this.props.industryTypeId} />
-      <input type="hidden" name="CHANNEL_ID" value={this.props.channelId} />
-      <input type="hidden" name="ORDER_ID" value={this.props.orderId} />
-      <input type="hidden" name="CUST_ID" value={this.props.customerId} />
-      <input type="hidden" name="TXN_AMOUNT" value={this.props.amount} />
-      <input type="hidden" name="MOBILE_NO" value={this.props.phone} />
-      <input type="hidden" name="EMAIL" value={this.props.email} />
-      <input type="hidden" name="CALLBACK_URL" size="64" value={this.props.callbackUrl} />
-      <input type="hidden" name="CHECKSUMHASH" value={this.props.checksum} />
-      <Button variant="contained" color="primary" style={{ margin: '0 auto', display: 'block', padding: 0, width: '100%', height: 44 }} disabled={this.state.submit}>
+
+    const { orderId, merchantId, website, industryTypeId, channelId, customerId, amount, phone, email, callbackUrl, checksum } = this.props;
+    // const url = `https://securegw.paytm.in/theia/processTransaction?ORDER_ID=${this.props.orderId}`;
+    const url = `https://securegw-stage.paytm.in/theia/processTransaction?ORDER_ID=${orderId}`;
+
+    return <form style={{ marginBottom: 0 }} className="form-control" action={url} name="f1" method="POST">
+      <input type="hidden" name="MID" value={merchantId} />
+      <input type="hidden" name="WEBSITE" value={website} />
+      <input type="hidden" name="INDUSTRY_TYPE_ID" value={industryTypeId} />
+      <input type="hidden" name="CHANNEL_ID" value={channelId} />
+      <input type="hidden" name="ORDER_ID" value={orderId} />
+      <input type="hidden" name="CUST_ID" value={customerId} />
+      <input type="hidden" name="TXN_AMOUNT" value={amount} />
+      <input type="hidden" name="MOBILE_NO" value={phone} />
+      <input type="hidden" name="EMAIL" value={email} />
+      <input type="hidden" name="CALLBACK_URL" size="64" value={callbackUrl} />
+      <input type="hidden" name="CHECKSUMHASH" value={checksum} />
+      <Button variant="contained" color="secondary" style={{ margin: '0 auto', display: 'block', padding: 0, width: '100%', height: 44 }} disabled={this.state.submit}>
         <input type="submit" style={{ outline: 'none', color: this.props.color === 'default' ? 'black' : 'white', padding: 0, background: 'none', border: 'none', width: '100%', height: 44, fontSize: 14, textTransform: 'uppercase', fontWeight: 'normal' }} value={
           this.state.submit
             ? 'Please wait..'
