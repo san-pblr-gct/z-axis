@@ -1,74 +1,34 @@
 /* eslint-disable no-magic-numbers */
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import { genchecksum } from './crypt';
-
-const key = 'qvXqT6z5tSKDjWXh';
 
 class Paytmbutton extends Component {
   state = {
-    mid: 'lzSXOq48634307639622',
-    orderId: (new Date).getTime(),
-    website: 'DEFAULT',
-    industryTypeId: 'Retail',
-    channelId: 'WEB',
-    customerId: 1,
-    phone: '',
-    email: '',
-    amount: this.props.amount,
-    callbackUrl: `https://${window.location.host}/paymentsuccess`,
-    checksum: '',
     submit: false,
   };
-
-  componentDidMount() {
-    this.setProperties();
-  }
-
-  setProperties() {
-    const { mid, orderId, website, industryTypeId, channelId, customerId, amount, phone, email, callbackUrl } = this.state;
-    const paramarray = {};
-    paramarray['ORDER_ID'] = orderId;
-    paramarray['MID'] = mid;
-    paramarray['CUST_ID'] = customerId;
-    paramarray['TXN_AMOUNT'] = amount;
-    paramarray['INDUSTRY_TYPE_ID'] = industryTypeId;
-    paramarray['CHANNEL_ID'] = channelId;
-    paramarray['WEBSITE'] = website;
-    paramarray['CALLBACK_URL'] = callbackUrl;
-    paramarray['EMAIL'] = email;
-    paramarray['MOBILE_NO'] = phone;
-    genchecksum(paramarray, key, checksum => this.setState({
-      amount,
-      checksum,
-      callbackUrl,
-    }));
-  }
   onSubmit() {
     this.setState({
       submit: true,
     });
   }
   render() {
-    const { mid, orderId, website, industryTypeId, channelId, customerId, amount, phone, email, callbackUrl, checksum } = this.state;
-
-    return <form style={{ marginBottom: 0 }} className="form-control" action={`https://securegw.paytm.in/theia/processTransaction?ORDER_ID=${orderId}`} name="f1" method="POST">
-      <input type="hidden" name="MID" value={mid} />
-      <input type="hidden" name="WEBSITE" value={website} />
-      <input type="hidden" name="INDUSTRY_TYPE_ID" value={industryTypeId} />
-      <input type="hidden" name="CHANNEL_ID" value={channelId} />
-      <input type="hidden" name="ORDER_ID" value={orderId} />
-      <input type="hidden" name="CUST_ID" value={customerId} />
-      <input type="hidden" name="TXN_AMOUNT" value={amount} />
-      <input type="hidden" name="MOBILE_NO" value={phone} />
-      <input type="hidden" name="EMAIL" value={email} />
-      <input type="hidden" name="CALLBACK_URL" size="64" value={callbackUrl} />
-      <input type="hidden" name="CHECKSUMHASH" value={checksum} />
+    return <form style={{ marginBottom: 0 }} className="form-control" action={`https://securegw.paytm.in/theia/processTransaction?ORDER_ID=${this.props.orderId}`} name="f1" method="POST">
+      <input type="hidden" name="MID" value={this.props.merchantId} />
+      <input type="hidden" name="WEBSITE" value={this.props.website} />
+      <input type="hidden" name="INDUSTRY_TYPE_ID" value={this.props.industryTypeId} />
+      <input type="hidden" name="CHANNEL_ID" value={this.props.channelId} />
+      <input type="hidden" name="ORDER_ID" value={this.props.orderId} />
+      <input type="hidden" name="CUST_ID" value={this.props.customerId} />
+      <input type="hidden" name="TXN_AMOUNT" value={this.props.amount} />
+      <input type="hidden" name="MOBILE_NO" value={this.props.phone} />
+      <input type="hidden" name="EMAIL" value={this.props.email} />
+      <input type="hidden" name="CALLBACK_URL" size="64" value={this.props.callbackUrl} />
+      <input type="hidden" name="CHECKSUMHASH" value={this.props.checksum} />
       <Button variant="contained" color="primary" style={{ margin: '0 auto', display: 'block', padding: 0, width: '100%', height: 44 }} disabled={this.state.submit}>
         <input type="submit" style={{ outline: 'none', color: this.props.color === 'default' ? 'black' : 'white', padding: 0, background: 'none', border: 'none', width: '100%', height: 44, fontSize: 14, textTransform: 'uppercase', fontWeight: 'normal' }} value={
           this.state.submit
             ? 'Please wait..'
-            : `Reveal Clues: ${amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
+            : `Reveal Clues: ${this.props.amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
         onClick={this.onSubmit.bind(this)} />
       </Button>
     </form>;

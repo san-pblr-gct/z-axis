@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import { createAction } from '../../utils/helpers';
-import 'isomorphic-fetch';
+// import fetch from 'isomorphic-fetch';
 import md5 from 'md5';
 import AsyncStorage from '@callstack/async-storage';
 import questions from './questions';
@@ -9,6 +9,7 @@ export const SET_QUESTION = 'APP::QUESTION';
 export const SET_ANSWER = 'APP::ANSWER';
 export const SET_CLUES = 'APP::CLUES';
 export const SET_ERROR = 'APP::ERROR';
+export const SET_CHECKSUM = 'APP::CHECKSUM';
 export const SET_ANSWER_ERROR = 'APP::ANSWER_ERROR';
 export const UPDATE_USER_LEVEL = 'APP::UPDATE_USER_LEVEL';
 
@@ -16,6 +17,7 @@ export const setQuestion = createAction(SET_QUESTION);
 export const setAnswer = createAction(SET_ANSWER);
 export const setClues = createAction(SET_CLUES);
 export const setError = createAction(SET_ERROR);
+export const setChecksum = createAction(SET_CHECKSUM);
 export const setAnswerErrorAction = createAction(SET_ANSWER_ERROR);
 
 export const getQuestion = () => async (dispatch) => {
@@ -81,7 +83,7 @@ export const revealClues = async () => {
 export const checkPayment = () => async dispatch => {
   const paymentMade = getParameterByName('payment');
   if (paymentMade) {
-    if(paymentMade === 'true') {
+    if (paymentMade === 'true') {
       if (await revealClues()) {
         dispatch([
           setAnswerError('Payment Success!', 'success'),
@@ -113,3 +115,23 @@ export const getParameterByName = (name, url) => {
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 };
+
+export const getCheckSum = (body = {}) => dispatch => {
+  fetch('/checksum', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.text())
+    .then(text => {
+      dispatch([
+        setChecksum(text),
+        setError(false),
+      ]);
+    })
+    .catch(() => {
+      dispatch(setError(true));
+    });
+}

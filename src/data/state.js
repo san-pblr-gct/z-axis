@@ -4,5 +4,6 @@ export default {
     answer: '',
     clues: [],
     error: null,
+    checksum: '',
   },
 };
