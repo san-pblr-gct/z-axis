@@ -20,13 +20,9 @@ const { title: mainTitle, description: mainDescription } = require('../../config
 
 class App extends Component {
   state = {
-    activeTab: '0',
   };
   handleDrawerToggle() {
     this.setState({ drawerOpen: !this.state.drawerOpen });
-  }
-  handleTabChange(value) {
-    this.setState({ activeTab: value });
   }
   handleNavbarTitleClick() {
     window.location = '/';
@@ -43,7 +39,6 @@ class App extends Component {
   }
   render() {
     const { classes, children } = this.props;
-    const { activeTab } = this.state;
 
     return <div>
       <noscript><ErrorMessage variant={'error'} message={"Please enable Javascript to continue."} /></noscript>
@@ -61,7 +56,7 @@ class App extends Component {
         <span className="hidden-accessiiblity">Share</span>
         <ShareIcon />
       </Fab>
-      <Footer handleTabChange={this.handleTabChange.bind(this)} activeTab={activeTab} />
+      <Footer />
     </div>;
   }
 }

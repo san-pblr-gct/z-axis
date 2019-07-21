@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { render } from 'react-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { MemoryRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';

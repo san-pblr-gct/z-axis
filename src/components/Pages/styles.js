@@ -5,7 +5,7 @@ export default () => ({
     height: 24,
     width: 24,
     color: '#fff',
-    float: 'right',
+    float: 'left',
     padding: 10,
     marginTop: -24,
     borderRadius: 3,
@@ -40,5 +40,8 @@ export default () => ({
   question: {
     textAlign: 'center',
     margin: 20,
+  },
+  pageTitle: {
+    marginLeft: 10,
   },
 });

@@ -25,7 +25,7 @@ class Answer extends Component {
     const { helperText = '', disabled = 'false' } = this.props;
 
     return <form onSubmit={this.handleFormSubmit.bind(this)}>
-      <Grid container spacing={16}>
+      <Grid container spacing={10}>
         <Grid item xs={9} sm={10} >
           <TextField
             id="filled-helperText"
@@ -34,7 +34,6 @@ class Answer extends Component {
             value={this.state.answer}
             autoFocus
             style={{ margin: 'auto', width: '100%' }}
-            defaultValue=""
             placeholder="Type in your answer here"
             helperText={helperText}
             margin="normal"

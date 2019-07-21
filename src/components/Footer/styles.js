@@ -7,7 +7,8 @@ export default theme => ({
     [theme.breakpoints.down('sm')]: {
       zIndex: 2,
     },
-    background: 'transparent',
+    color: 'white',
+    background: '#000',
   },
   icon: {
     color: 'white',
