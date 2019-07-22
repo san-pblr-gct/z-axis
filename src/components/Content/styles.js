@@ -15,7 +15,7 @@ export default theme => ({
     },
   },
   toolbar: {
-    height: 44,
+    height: 48,
   },
   fab: {
     height: 50,

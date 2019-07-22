@@ -6,5 +6,6 @@ export default {
     error: null,
     checksum: '',
     level: 0,
+    loading: false,
   },
 };

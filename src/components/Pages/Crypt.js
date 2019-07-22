@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import CryptIcon from '@material-ui/icons/Extension';
 import { withStyles } from '@material-ui/core/styles';
-
+import FullpageLoader from '../FullpageLoader/FullpageLoader';
 import Content from '../Content/Content';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Clues from './Clue';
@@ -28,16 +28,18 @@ class Page extends Component {
     setAnswerError(null);
   }
   render() {
-    const { classes, app: { question, error, level } } = this.props;
+    const { classes, app: { question, error, level, loading } } = this.props;
+
     return <React.Fragment>
       {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)}/>}
-      <Content>
+      {loading && <FullpageLoader />}
+      {!loading && <Content>
         <CryptIcon className={classes.homeIcon} />
         <Typography className={classes.pageTitle1} variant="caption">{`Level ${level}`}</Typography>
         <Typography variant="h6" className={classes.question}>{question}</Typography>
         <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} helperText={''}/>
         <Clues />
-      </Content>
+      </Content>}
     </React.Fragment>;
   }
 }

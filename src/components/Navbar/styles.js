@@ -29,9 +29,11 @@ export default theme => ({
       marginLeft: -12,
     },
   },
-  flex: {
+  title: {
     color: '#fff',
     cursor: 'pointer',
+  },
+  flex: {
     flexGrow: 1,
   },
   italics: {

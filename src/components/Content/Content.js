@@ -10,7 +10,6 @@ import Fab from '@material-ui/core/Fab';
 import ShareIcon from '@material-ui/icons/Share';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-
 import { RulesContent } from '../Pages/Rules';
 import styles from './styles';
 
@@ -38,7 +37,6 @@ class PaperSheet extends React.Component {
 
   render() {
     const { classes, children } = this.props;
-
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
