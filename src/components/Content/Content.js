@@ -14,7 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { RulesContent } from '../Pages/Rules';
 import styles from './styles';
 
-const { title: mainTitle, description: mainDescription } = require('../../config/variables');
+const { title: mainTitle, description: mainDescription, url } = require('../../config/variables');
 
 class PaperSheet extends React.Component {
   state = {
@@ -28,10 +28,11 @@ class PaperSheet extends React.Component {
     this.setState({ open: false });
   };
   handleShareClick = () => {
+    const { app: { level } } = this.props;
     if (navigator && navigator.share) navigator.share({
-      title: mainTitle,
+      title: `Level ${level} | ${mainTitle}`,
       text: mainDescription,
-      url: 'https://play.google.com/store/apps/details?id=com.londonz.app',
+      url,
     });
   }
 
