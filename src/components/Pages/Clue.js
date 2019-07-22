@@ -9,7 +9,7 @@ import PayButton from '../PayButton/PayButton';
 import styles from './styles';
 import { getCheckSum } from '../../data/app/appActions';
 
-const amount = 9;
+const amount = 49;
 // const merchantId = 'lzSXOq48634307639622';
 const merchantId = 'lfBFyS02396274370168'; // test
 const orderId = (new Date()).getTime();

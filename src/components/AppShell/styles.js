@@ -19,8 +19,8 @@ export default theme => ({
   },
   fab: {
     position: 'fixed',
-    bottom: 40,
-    right: 20,
+    bottom: 'calc(50% - 28px)',
+    right: 0,
     // zIndex: 2002,
   },
   footer: {

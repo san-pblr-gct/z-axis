@@ -19,6 +19,7 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      { test: /\.(svg|png|jpg|jpeg|gif|ico|webp)$/, loader: 'file-loader', options: { name: 'img/[name].[ext]' } },
     ],
   },
   target: 'node',
