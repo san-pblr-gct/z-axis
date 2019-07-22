@@ -7,6 +7,7 @@ const themeColor = '#ffffff';
 const description = 'Think out of the box.';
 const shortDescription = 'Web Artist';
 const domain = 'https://z-axis.web.app';
+const timestamp = (new Date()).getTime();
 
 const getPaths = () => {
   let paths = [];
@@ -71,4 +72,33 @@ module.exports = {
     ogFbAppId: '297023651089707',
   },
   getPaths,
+  paymentEnv: 'prod',
+  paytm: {
+    test: {
+      amount: 49,
+      merchantId: 'lfBFyS02396274370168',
+      website: "WEBSTAGING",
+      orderId: timestamp,
+      customerId: `Customer-${timestamp}`,
+      email: '-',
+      phone: '-',
+      industryTypeId: "Retail",
+      channelId: "WEB",
+      callbackUrl: `http://localhost:9000/paymentprocess`,
+      url: `https://securegw-stage.paytm.in/theia/processTransaction?ORDER_ID=${timestamp}`,
+    },
+    prod: {
+      amount: 49,
+      merchantId: 'lzSXOq48634307639622',
+      website: "DEFAULT",
+      orderId: timestamp,
+      customerId: `Customer-${timestamp}`,
+      email: '-',
+      phone: '-',
+      industryTypeId: "Retail",
+      channelId: "WEB",
+      callbackUrl: `${domain}/paymentprocess`,
+      url: `https://securegw.paytm.in/theia/processTransaction?ORDER_ID=${timestamp}`,
+    },
+  },
 };

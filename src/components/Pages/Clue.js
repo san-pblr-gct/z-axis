@@ -9,17 +9,8 @@ import PayButton from '../PayButton/PayButton';
 import styles from './styles';
 import { getCheckSum } from '../../data/app/appActions';
 
-const amount = 49;
-// const merchantId = 'lzSXOq48634307639622';
-const merchantId = 'lfBFyS02396274370168'; // test
-const orderId = (new Date()).getTime();
-const customerId = `Customer-${(new Date()).getTime()}`;
-const email = '-';
-const phone = '-';
-const website = "WEBSTAGING"
-const industryTypeId = "Retail"
-const channelId = "WEB"
-const callbackUrl = `https://${window.location.host}/paymentprocess`;
+const { paymentEnv } = require('../../config/variables');
+const { paytm: { [paymentEnv]: { url, merchantId, orderId, customerId, amount, industryTypeId, channelId, website, callbackUrl, email, phone } } } = require('../../config/variables');
 
 class Page extends Component {
   componentDidMount() {
@@ -51,7 +42,8 @@ class Page extends Component {
         industryTypeId={industryTypeId}
         channelId={channelId}
         checksum={checksum}
-        callbackUrl={callbackUrl} />
+        callbackUrl={callbackUrl}
+        url={url} />
     </div>;
     return clues.map((clue, i) => <Typography variant="subtitle2" key={i}>{i + 1}: <i>{clue}</i></Typography>);
   }

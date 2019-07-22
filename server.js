@@ -35,9 +35,7 @@ app.post('/paymentprocess', (req, res) => {
 });
 
 app.post('/checksum', (req, res) => {
-  // const key = 'qvXqT6z5tSKDjWXh';
-  const key = 'qWzN4AATjzd8pRPC'; // test
-  genchecksum(req.body, key, cs => res.send(cs));
+  genchecksum(req.body, process.env.KEY, cs => res.send(cs));
 });
 
 app.get('**', (req, res) => {

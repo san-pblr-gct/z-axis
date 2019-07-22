@@ -13,9 +13,7 @@ class Paytmbutton extends Component {
   }
   render() {
 
-    const { orderId, merchantId, website, industryTypeId, channelId, customerId, amount, phone, email, callbackUrl, checksum } = this.props;
-    // const url = `https://securegw.paytm.in/theia/processTransaction?ORDER_ID=${this.props.orderId}`;
-    const url = `https://securegw-stage.paytm.in/theia/processTransaction?ORDER_ID=${orderId}`;
+    const { url, orderId, merchantId, website, industryTypeId, channelId, customerId, amount, phone, email, callbackUrl, checksum } = this.props;
 
     return <form style={{ marginBottom: 0 }} className="form-control" action={url} name="f1" method="POST">
       <input type="hidden" name="MID" value={merchantId} />

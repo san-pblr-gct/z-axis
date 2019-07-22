@@ -8,6 +8,7 @@ functions/index.js
 functions/templates
 functions/node_modules
 functions/posts
+functions/img
 *.log
 *.err
 cypress/screenshots
