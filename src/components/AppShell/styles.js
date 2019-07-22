@@ -18,9 +18,11 @@ export default theme => ({
   sidebar: {
   },
   fab: {
+    height: 44,
+    width: 44,
     position: 'fixed',
-    bottom: 'calc(50% - 28px)',
-    right: 0,
+    top: 54,
+    right: 30,
     // zIndex: 2002,
   },
   footer: {

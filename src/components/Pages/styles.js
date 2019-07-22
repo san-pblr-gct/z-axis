@@ -40,6 +40,7 @@ export default () => ({
   question: {
     textAlign: 'center',
     margin: 20,
+    padding: 20,
   },
   pageTitle1: {
     marginLeft: 10,
