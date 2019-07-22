@@ -10,7 +10,7 @@ export const SET_ANSWER = 'APP::ANSWER';
 export const SET_CLUES = 'APP::CLUES';
 export const SET_ERROR = 'APP::ERROR';
 export const SET_CHECKSUM = 'APP::CHECKSUM';
-export const SET_ANSWER_ERROR = 'APP::ANSWER_ERROR';
+export const SET_LEVEL = 'APP::SET_LEVEL';
 export const UPDATE_USER_LEVEL = 'APP::UPDATE_USER_LEVEL';
 
 export const setQuestion = createAction(SET_QUESTION);
@@ -18,7 +18,7 @@ export const setAnswer = createAction(SET_ANSWER);
 export const setClues = createAction(SET_CLUES);
 export const setError = createAction(SET_ERROR);
 export const setChecksum = createAction(SET_CHECKSUM);
-// export const setAnswerErrorAction = createAction(SET_ANSWER_ERROR);
+export const setLevel = createAction(SET_LEVEL);
 
 export const getQuestion = () => async (dispatch) => {
   const currentLevel = await getCurrentLevel();
@@ -28,6 +28,7 @@ export const getQuestion = () => async (dispatch) => {
   dispatch([
     setQuestion(question),
     setAnswer(answer),
+    setLevel(currentLevel),
     setClues(clues.slice(0, currentClues)),
   ]);
 };
@@ -59,9 +60,10 @@ export const getCurrentClues = async () => {
   }
 };
 
-export const updateUserLevel = () => async dispatch => {
+export const updateUserLevel = () => async (dispatch, getState) => {
+  const { app : { level } } = getState();
   try {
-    const currentLevel = await getCurrentLevel();
+    const currentLevel = level;
     await AsyncStorage.setItem('level', currentLevel + 1);
     await AsyncStorage.setItem('clues', 0);
     dispatch([

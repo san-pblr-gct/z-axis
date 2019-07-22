@@ -28,12 +28,12 @@ class Page extends Component {
     setAnswerError(null);
   }
   render() {
-    const { classes, app: { question, error } } = this.props;
+    const { classes, app: { question, error, level } } = this.props;
     return <React.Fragment>
       {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)}/>}
       <Content>
         <CryptIcon className={classes.homeIcon} />
-        {/* <Typography className={classes.pageTitle1} variant="overline">Crypt</Typography> */}
+        <Typography className={classes.pageTitle1} variant="caption">{`Level ${level}`}</Typography>
         <Typography variant="h6" className={classes.question}>{question}</Typography>
         <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} helperText={''}/>
         <Clues />

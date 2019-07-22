@@ -16,7 +16,7 @@ export default theme => ({
     // marginBottom: 60,
   },
   toolbar: {
-    height: 40,
+    height: 44,
   },
   green: {
     height: 24,

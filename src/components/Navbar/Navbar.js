@@ -3,8 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
+import classNames from 'classnames';
+
 import styles from './styles';
 
 class Navbar extends React.Component {
@@ -27,9 +27,9 @@ class Navbar extends React.Component {
             className={classes.menuButton}>
             <MenuIcon className={classes.menuIcon} />
           </IconButton> */}
-          <img alt="logo" src="/img/logo-56.png" className={classes.logoIcon} />
+          <img alt="logo" src="/img/logo-56.png" className={classNames(classes.logoIcon, 'rotate')} />
           <Typography variant="h6" color="textSecondary" className={classes.flex} noWrap onClick={onNavbarTitleClick}>{title}</Typography>
-          <Typography variant="subtitle1" color="inherit" className={classes.italics} noWrap>{description}</Typography>
+          <Typography variant="body2" color="inherit" className={classes.italics} noWrap>{description}</Typography>
         </Toolbar>
       </AppBar>
     );

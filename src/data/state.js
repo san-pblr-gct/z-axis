@@ -5,5 +5,6 @@ export default {
     clues: [],
     error: null,
     checksum: '',
+    level: 0,
   },
 };
