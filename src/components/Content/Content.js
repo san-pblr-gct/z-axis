@@ -27,9 +27,8 @@ class PaperSheet extends React.Component {
     this.setState({ open: false });
   };
   handleShareClick = () => {
-    const { app: { level } } = this.props;
     if (navigator && navigator.share) navigator.share({
-      title: `Level ${level} | ${mainTitle}`,
+      title: mainTitle,
       text: mainDescription,
       url,
     });
