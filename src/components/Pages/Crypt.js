@@ -33,7 +33,7 @@ class Page extends Component {
       {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)}/>}
       <Content>
         <CryptIcon className={classes.homeIcon} />
-        <Typography className={classes.pageTitle1} variant="overline">Crypt</Typography>
+        {/* <Typography className={classes.pageTitle1} variant="overline">Crypt</Typography> */}
         <Typography variant="h6" className={classes.question}>{question}</Typography>
         <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} helperText={''}/>
         <Clues />

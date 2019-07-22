@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 
 import styles from './styles';
 
@@ -51,7 +51,7 @@ class App extends Component {
         <span className="hidden-accessiiblity">Share</span>
         <ShareIcon />
       </Fab>
-      <Footer />
+      {/* <Footer /> */}
     </div>;
   }
 }

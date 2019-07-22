@@ -21,7 +21,7 @@ export default theme => ({
     position: 'fixed',
     bottom: 40,
     right: 20,
-    zIndex: 2002,
+    // zIndex: 2002,
   },
   footer: {
     fontStyle: 'italic',
