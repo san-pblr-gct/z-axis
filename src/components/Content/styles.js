@@ -13,23 +13,26 @@ export default theme => ({
     [theme.breakpoints.up('md')]: {
       padding: 20,
     },
-    // marginBottom: 60,
   },
   toolbar: {
     height: 44,
   },
+  fab: {
+    height: 50,
+    width: 50,
+    float: 'right',
+    top: -24,
+  },
   green: {
-    height: 24,
-    width: 24,
+    height: 50,
+    width: 50,
     color: '#fff',
     float: 'right',
-    padding: 10,
     marginTop: -25,
-    marginRight: 45,
+    marginRight: 10,
     borderRadius: '50%',
     backgroundColor: '#999',
     background: 'linear-gradient(60deg, #66bb6a, #43a047)',
-    // boxShadow: '0 12px 20px -10px rgba(244, 67, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2)',
     boxShadow: '0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2)',
   },
 });

@@ -17,14 +17,6 @@ export default theme => ({
   },
   sidebar: {
   },
-  fab: {
-    height: 44,
-    width: 44,
-    position: 'fixed',
-    top: 54,
-    right: 30,
-    // zIndex: 2002,
-  },
   footer: {
     fontStyle: 'italic',
     fontWeight: 300,

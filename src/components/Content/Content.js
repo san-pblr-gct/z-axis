@@ -6,10 +6,15 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Fab from '@material-ui/core/Fab';
+import ShareIcon from '@material-ui/icons/Share';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 
 import { RulesContent } from '../Pages/Rules';
 import styles from './styles';
+
+const { title: mainTitle, description: mainDescription } = require('../../config/variables');
 
 class PaperSheet extends React.Component {
   state = {
@@ -22,6 +27,13 @@ class PaperSheet extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+  handleShareClick = () => {
+    if (navigator && navigator.share) navigator.share({
+      title: mainTitle,
+      text: mainDescription,
+      url: 'https://play.google.com/store/apps/details?id=com.londonz.app',
+    });
+  }
 
   render() {
     const { classes, children } = this.props;
@@ -30,8 +42,12 @@ class PaperSheet extends React.Component {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Paper className={classes.root} elevation={1}>
+          <Fab className={classNames(classes.fab)} color={'primary'} onClick={this.handleShareClick} aria-label="share" name="share">
+            <span className="hidden-accessiiblity">Share</span>
+            <ShareIcon />
+          </Fab>
           <div className={classes.green} onClick={this.handleClickOpen}>
-            <InfoIcon />
+            <InfoIcon style={{ padding: 13 }} />
           </div>
           {children}
         </Paper>

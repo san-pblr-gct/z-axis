@@ -27,7 +27,7 @@ class Paytmbutton extends Component {
       <input type="hidden" name="EMAIL" value={email} />
       <input type="hidden" name="CALLBACK_URL" size="64" value={callbackUrl} />
       <input type="hidden" name="CHECKSUMHASH" value={checksum} />
-      <Button variant="contained" color="primary" style={{ margin: '0 auto', display: 'block', padding: 0, width: '100%', height: 44 }} disabled={this.state.submit}>
+      <Button variant="contained" color="secondary" style={{ margin: '0 auto', display: 'block', padding: 0, width: '100%', height: 44 }} disabled={this.state.submit}>
         <input type="submit" style={{ outline: 'none', color: 'white', padding: 0, background: 'none', border: 'none', width: '100%', height: 44, fontSize: 14, textTransform: 'uppercase', fontWeight: 'normal' }} value={
           this.state.submit
             ? 'Please wait..'

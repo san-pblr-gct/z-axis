@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Fab from '@material-ui/core/Fab';
-import ShareIcon from '@material-ui/icons/Share';
-import classNames from 'classnames';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import Navbar from '../Navbar/Navbar';
@@ -21,13 +18,6 @@ class App extends Component {
   }
   handleNavbarTitleClick() {
     window.location = '/';
-  }
-  handleShareClick() {
-    if (navigator && navigator.share) navigator.share({
-      title: mainTitle,
-      text: mainDescription,
-      url: 'https://play.google.com/store/apps/details?id=com.londonz.app',
-    });
   }
   handleSidebarLinkClick() {
     if (this.state.drawerOpen) this.handleDrawerToggle();
@@ -47,10 +37,6 @@ class App extends Component {
           </Grid>
         </div>
       </div>
-      <Fab className={classNames(classes.fab)} color={'secondary'} onClick={this.handleShareClick} aria-label="share" name="share">
-        <span className="hidden-accessiiblity">Share</span>
-        <ShareIcon />
-      </Fab>
       {/* <Footer /> */}
     </div>;
   }
