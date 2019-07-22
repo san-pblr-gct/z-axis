@@ -64,7 +64,10 @@ export const updateUserLevel = () => async dispatch => {
     const currentLevel = await getCurrentLevel();
     await AsyncStorage.setItem('level', currentLevel + 1);
     await AsyncStorage.setItem('clues', 0);
-    dispatch(getQuestion());
+    dispatch([
+      getQuestion(),
+      setAnswerError('Well done. Right answer!', 'success'),
+    ]);
   } catch {
     return false;
   }
@@ -84,7 +87,7 @@ export const checkPayment = () => async dispatch => {
   if (paymentMade) {
     if (paymentMade === 'true') {
       if (await revealClues()) {
-        dispatch(setAnswerError('Payment Success!', 'success'));
+        dispatch(setAnswerError('Payment Success!', 'info'));
       }
     } else if (paymentMade === 'false') {
       dispatch(setAnswerError('Payment Failure!', 'error'));

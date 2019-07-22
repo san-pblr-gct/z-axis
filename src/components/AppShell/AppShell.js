@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-// import Hidden from '@material-ui/core/Hidden';
 import Fab from '@material-ui/core/Fab';
 import ShareIcon from '@material-ui/icons/Share';
 import classNames from 'classnames';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import Navbar from '../Navbar/Navbar';
-// import RightSidebar from '../RightSidebar/RightSidebar';
-// import Sidebar from '../Sidebar/Sidebar';
-// import SidebarContent from '../SidebarContent/SidebarContent';
 import Footer from '../Footer/Footer';
-// import RightSidebarContent from '../SidebarContent/RightSidebarContent';
 
 import styles from './styles';
 
@@ -31,7 +26,7 @@ class App extends Component {
     if (navigator && navigator.share) navigator.share({
       title: mainTitle,
       text: mainDescription,
-      url: window ? window.location.href : '',
+      url: 'https://play.google.com/store/apps/details?id=com.londonz.app',
     });
   }
   handleSidebarLinkClick() {

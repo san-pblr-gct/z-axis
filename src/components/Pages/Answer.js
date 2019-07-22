@@ -32,7 +32,6 @@ class Answer extends Component {
             label="Answer"
             InputProps={{ autoComplete: "off" }}
             value={this.state.answer}
-            autoFocus
             style={{ margin: 'auto', width: '100%' }}
             placeholder="Type in your answer here"
             helperText={helperText}
