@@ -14,7 +14,4 @@ export default theme => ({
       padding: 20,
     },
   },
-  toolbar: {
-    height: 48,
-  },
 });

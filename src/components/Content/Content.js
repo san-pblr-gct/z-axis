@@ -8,7 +8,6 @@ class PaperSheet extends React.Component {
     const { classes, children } = this.props;
     return (
       <main className={classes.content}>
-        <div className={classes.toolbar} />
         <Paper className={classes.root} elevation={1}>
           {children}
         </Paper>
