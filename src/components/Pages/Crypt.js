@@ -7,13 +7,56 @@ import { withStyles } from '@material-ui/core/styles';
 import FullpageLoader from '../FullpageLoader/FullpageLoader';
 import Content from '../Content/Content';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import InfoIcon from '@material-ui/icons/Help';
+import DialogBox from '../DialogBox/DialogBox';
+import Fab from '@material-ui/core/Fab';
+import ShareIcon from '@material-ui/icons/Share';
+import Reset from '@material-ui/icons/Refresh';
+import classNames from 'classnames';
 import Clues from './Clue';
-import styles from './styles';
-
-import { getQuestion, setAnswerError, updateUserLevel, checkPayment, checkAnswer } from '../../data/app/appActions';
+import { RulesContent } from '../Pages/Rules';
+import { RefreshContent } from '../Pages/Refresh';
 import Answer from './Answer';
 
+import styles from './styles';
+
+import { getQuestion, setAnswerError, updateUserLevel, checkPayment, checkAnswer, resetLevels } from '../../data/app/appActions';
+
+const { title: mainTitle, description: mainDescription, url } = require('../../config/variables');
+
 class Page extends Component {
+  state = {
+    rules: false,
+    reset: false,
+  };
+  handleRulesOpen = () => {
+    this.setState({ rules: true });
+  };
+
+  handleRefreshOpen = () => {
+    this.setState({ reset: true });
+  };
+
+  handleClose = () => {
+    this.setState({
+      rules: false,
+      reset: false,
+    });
+  };
+
+  handleResetAgree = () => {
+    const { resetLevels } = this.props;
+    this.handleClose();
+    resetLevels();
+  }
+
+  handleShareClick = () => {
+    if (navigator && navigator.share) navigator.share({
+      title: mainTitle,
+      text: mainDescription,
+      url,
+    });
+  }
   componentDidMount() {
     const { getQuestion, checkPayment } = this.props;
     getQuestion();
@@ -31,15 +74,30 @@ class Page extends Component {
     const { classes, app: { question, error, level, loading } } = this.props;
 
     return <React.Fragment>
-      {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)}/>}
+      {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)} />}
       {loading && <FullpageLoader />}
       {!loading && <Content>
         <CryptIcon className={classes.homeIcon} />
+        <Fab className={classNames(classes.fab)} color={'secondary'} onClick={this.handleShareClick} aria-label="share" name="share">
+          <span className="hidden-accessiiblity">Share</span>
+          <ShareIcon />
+        </Fab>
+        <Fab className={classNames(classes.fab)} color={'secondary'} onClick={this.handleRulesOpen} aria-label="share" name="share">
+          <span className="hidden-accessiiblity">Share</span>
+          <InfoIcon />
+        </Fab>
+        <Fab className={classNames(classes.fab)} color={'secondary'} onClick={this.handleRefreshOpen} aria-label="share" name="share">
+          <span className="hidden-accessiiblity">Reset</span>
+          <Reset />
+        </Fab>
         <Typography className={classes.pageTitle1} variant="caption">{`Level ${level}`}</Typography>
         <Typography variant="h6" className={classes.question}>{question}</Typography>
-        <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} helperText={''}/>
+        <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} helperText={''} />
         <Clues />
       </Content>}
+
+      <DialogBox title="Rules" open={this.state.rules} handleClose={this.handleClose}><RulesContent /></DialogBox>
+      <DialogBox title="Reset" open={this.state.reset} handleClose={this.handleClose} handleAgree={this.handleResetAgree}><RefreshContent /></DialogBox>
     </React.Fragment>;
   }
 }
@@ -51,6 +109,7 @@ const mapDispatchToProps = dispatch => ({
   updateUserLevel: () => dispatch(updateUserLevel()),
   checkPayment: () => dispatch(checkPayment()),
   checkAnswer: givenAnswer => dispatch(checkAnswer(givenAnswer)),
+  resetLevels: () => dispatch(resetLevels()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Page));

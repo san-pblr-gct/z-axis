@@ -148,4 +148,22 @@ export const getCheckSum = (body = {}) => dispatch => {
         type: 'warning',
       }));
     });
+};
+
+export const resetLevels = () => async dispatch => {
+  dispatch([
+    setLoading(true),
+    setError({
+      message: 'Your progress has been reset.',
+      type: 'info',
+    }),
+  ]);
+  setTimeout(() => {
+    dispatch([
+      getQuestion(),
+      setLoading(false),
+    ]);
+  }, 2000);
+  await AsyncStorage.setItem('level', 1);
+  await AsyncStorage.removeItem('clues');
 }

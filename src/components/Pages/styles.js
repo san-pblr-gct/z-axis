@@ -48,4 +48,12 @@ export default () => ({
   pageTitle: {
     marginTop: 20,
   },
+  fab: {
+    height: 40,
+    width: 40,
+    float: 'right',
+    top: -30,
+    right: -15,
+    marginLeft: 5,
+  },
 });
