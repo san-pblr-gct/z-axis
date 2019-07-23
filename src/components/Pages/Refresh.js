@@ -9,5 +9,6 @@ const MyListItem = ({ primary = null, secondary = null }) => <ListItem style={{ 
 
 export const RefreshContent = () => <List dense>
   <MyListItem primary="This will reset all your progress and you will be sent back to level 1." />
+  <MyListItem primary="You will also lose the clues you have paid for." />
   <MyListItem primary="Are you sure?" />
 </List>;

@@ -31,8 +31,8 @@ class Rules extends Component {
 }
 
 export const RulesContent = () => <List dense>
-  <MyListItem primary="This is not your everyday quiz! This is an Online Treasure Hunt. " />
-  <MyListItem primary="This hunt consists of 100 levels. Each level contains a crypt/task/puzzle, solving which you will get the answer to the next level." secondary="And the goal is to solve all the levels." />
+  <MyListItem primary="This is not a quiz! This is an Online Treasure Hunt. " />
+  <MyListItem primary="This hunt consists of certain number of levels. Each level contains a crypt/task/puzzle." secondary="And the goal is to solve it." />
   <MyListItem primary="All answers are lowercase strings with only alphabets/numbers." secondary="And that means no spaces or special characters." />
   <MyListItem primary="There are 2 clues every level." secondary="Look out for hidden clues apart from the given clues." />
   <MyListItem primary="We might also put clues in facebook or instagram or maybe even as push notifications." />
