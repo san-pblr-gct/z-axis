@@ -1,16 +1,11 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';
 import AppShell from './src/components/AppShell/AppShell';
-import FullpageLoader from './src/components/FullpageLoader/FullpageLoader';
-
-const Crypt = lazy(() => import('./src/components/Pages/Crypt'));
-const Clue = lazy(() => import('./src/components/Pages/Clue'));
-const Rules = lazy(() => import('./src/components/Pages/Rules'));
+import Crypt from './src/components/Pages/Crypt';
 
 import './src/utils/webShare';
 
@@ -36,21 +31,13 @@ function Main() {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <Router>
-        <ErrorBoundary>
-          <ReduxProvider store={store}>
-            <Suspense fallback={<FullpageLoader />}>
-              <Switch>
-                <AppShell>
-                  <Route exact path="/" component={Crypt} />
-                  <Route exact path="/clue" component={Clue} />
-                  <Route exact path="/rules" component={Rules} />
-                </AppShell>
-              </Switch>
-            </Suspense>
-          </ReduxProvider>
-        </ErrorBoundary>
-      </Router>
+      <ErrorBoundary>
+        <ReduxProvider store={store}>
+          <AppShell>
+            <Crypt />
+          </AppShell>
+        </ReduxProvider>
+      </ErrorBoundary>
     </MuiThemeProvider>
   );
 }

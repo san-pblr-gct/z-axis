@@ -7,13 +7,13 @@ import fs from 'fs';
 import crypto from 'crypto';
 import ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
-import { StaticRouter as Router } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import moment from 'moment';
 import bodyParser from 'body-parser';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';
 import AppShell from './src/components/AppShell/AppShell';
+import Crypt from './src/components/Pages/Crypt';
 
 import theme from './src/config/theme';
 import store from './src/data/store';
@@ -32,7 +32,7 @@ app.use(cors);
 app.options('*', cors);
 
 app.post('/paymentprocess', (req, res) => {
-  if(req.body.STATUS && req.body.STATUS === 'TXN_SUCCESS') {
+  if (req.body.STATUS && req.body.STATUS === 'TXN_SUCCESS') {
     return res.redirect(302, '/?payment=true');
   }
   return res.redirect(302, '/?payment=false');
@@ -47,13 +47,13 @@ app.get('**', (req, res) => {
   const html = ReactDOMServer.renderToString(
     sheets.collect(
       <ThemeProvider theme={theme}>
-        <Router location={req.url} context={{}}>
-          <ErrorBoundary>
-            <ReduxProvider store={store}>
-              <AppShell />
-            </ReduxProvider>
-          </ErrorBoundary>
-        </Router>
+        <ErrorBoundary>
+          <ReduxProvider store={store}>
+            <AppShell>
+              <Crypt />
+            </AppShell>
+          </ReduxProvider>
+        </ErrorBoundary>
       </ThemeProvider>,
     ),
   );

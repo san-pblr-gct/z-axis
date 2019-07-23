@@ -27,7 +27,7 @@ class Navbar extends React.Component {
             className={classes.menuButton}>
             <MenuIcon className={classes.menuIcon} />
           </IconButton> */}
-          <img alt="logo" src="/img/logo-56.png" className={classNames(classes.logoIcon, 'rotate')} />
+          <img alt="logo" src="./img/logo-56.png" className={classNames(classes.logoIcon, 'rotate')} />
           <Typography variant="h6" className={classes.title} color="textSecondary" noWrap onClick={onNavbarTitleClick}>{title}</Typography>
           <a className={classes.flex} href="https://play.google.com/store/apps/details?id=com.londonz.app&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
             <img

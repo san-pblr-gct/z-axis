@@ -13,7 +13,7 @@ const styles = theme => ({
 const LoadingIndicator = () => {
   // const { classes } = props;
   return <div className="logo">
-    <img alt="logo" className="logoIcon rotate" src="/img/logo-56.png" />
+    <img alt="logo" className="logoIcon rotate" src="./img/logo-56.png" />
     <div className="typewriter">
       <p>Think out of the box!</p>
     </div>

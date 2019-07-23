@@ -13,17 +13,17 @@ import '../../../assets/crypts/18_2.jpg';
 import '../../../assets/crypts/18_3.jpg';
 
 const steps = num => [ {
-  imgPath: `/img/${num}_1.jpg`,
+  imgPath: `./img/${num}_1.jpg`,
 }, {
-  imgPath: `/img/${num}_2.jpg`,
+  imgPath: `./img/${num}_2.jpg`,
 }, {
-  imgPath: `/img/${num}_3.jpg`,
+  imgPath: `./img/${num}_3.jpg`,
 } ];
 
 export default [
   {},
   {
-    question: <img src="/img/you.jpg" style={{ width: 200 }} />,
+    question: <img src="./img/you.jpg" style={{ width: 200 }} />,
     answer: '639bae9ac6b3e1a84cebb7b403297b79',
     clues: [ 'Workforce', 'Whats he pointing at?' ],
   },
@@ -63,7 +63,7 @@ export default [
     clues: [ 'What constists of 7 things?', 'Happens all the time' ],
   },
   {
-    question: <img src="/img/chessboard.gif" style={{ height: 200, width: 200 }} />,
+    question: <img src="./img/chessboard.gif" style={{ height: 200, width: 200 }} />,
     answer: 'cf26e29f41ea1a29ba20fd84c0caf55d',
     clues: [ 'Short & sweet', 'Checkmate' ],
   },

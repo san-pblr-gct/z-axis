@@ -4,6 +4,7 @@ import { createAction } from '../../utils/helpers';
 import md5 from 'md5';
 import AsyncStorage from '@callstack/async-storage';
 import questions from './questions';
+import { url } from '../../config/variables';
 
 export const SET_QUESTION = 'APP::QUESTION';
 export const SET_ANSWER = 'APP::ANSWER';
@@ -126,8 +127,9 @@ export const getParameterByName = (name, url) => {
 };
 
 export const getCheckSum = (body = {}) => dispatch => {
-  fetch('/checksum', {
+  fetch(`${url}/checksum`, {
     method: 'POST',
+    mode: 'cors',
     body: JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json',
