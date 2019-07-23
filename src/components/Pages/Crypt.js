@@ -96,7 +96,7 @@ class Page extends Component {
         <Clues />
       </Content>}
 
-      <DialogBox title="Rules" open={this.state.rules} handleClose={this.handleClose}><RulesContent /></DialogBox>
+      <DialogBox title="Rules" open={this.state.rules} handleClose={this.handleClose} handleAgree={this.handleClose}><RulesContent /></DialogBox>
       <DialogBox title="Reset" open={this.state.reset} handleClose={this.handleClose} handleAgree={this.handleResetAgree}><RefreshContent /></DialogBox>
     </React.Fragment>;
   }

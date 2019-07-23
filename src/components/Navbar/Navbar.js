@@ -18,7 +18,7 @@ class Navbar extends React.Component {
     } = this.props;
 
     return (
-      <AppBar id="navbar" className={classes.appBar} elevation={0}>
+      <AppBar id="navbar" className={classes.appBar} elevation={0} position={'static'}>
         <Toolbar className={classes.toolBar}>
           {/* <IconButton
             color="inherit"
