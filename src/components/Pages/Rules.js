@@ -13,8 +13,8 @@ const MyListItem = ({ primary = null, secondary = null }) => <ListItem style={{ 
   <ListItemText primary={primary} secondary={secondary} />
 </ListItem>;
 
-const Instagram = ({ onClick }) => <span onClick={onClick}> <img style={{ height: 24, width: 24, marginLeft: 5, marginRight: 5, marginBottom: -8, color: '#fff' }} src="/img/instagram.svg" /></span>;
-const Facebook = ({ onClick }) => <span onClick={onClick}> <img style={{ height: 22, width: 22, marginLeft: 5, marginRight: 5, marginBottom: -8, color: '#fff' }} src="/img/facebook.png" /></span>;
+const Instagram = ({ onClick }) => <span onClick={onClick}> <img style={{ height: 24, width: 24, marginLeft: 5, marginRight: 5, marginBottom: -8, color: '#fff' }} src="./img/instagram.svg" /></span>;
+const Facebook = ({ onClick }) => <span onClick={onClick}> <img style={{ height: 22, width: 22, marginLeft: 5, marginRight: 5, marginBottom: -8, color: '#fff' }} src="./img/facebook.png" /></span>;
 
 class Rules extends Component {
   onInstagramIconClick() {
