@@ -20,12 +20,16 @@ import store from './src/data/store';
 
 import { getMetaTags } from './src/utils/helpers';
 
+const cors = require('cors')({ origin: true });
+
 const { themeColor, author, seo: { keywords }, og: { ogImageAlt, ogType, ogFbAppId } } = require('./src/config/variables');
 
 const template = fs.readFileSync('./templates/server.html', 'utf8');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors);
+app.options('*', cors);
 
 app.post('/paymentprocess', (req, res) => {
   if(req.body.STATUS && req.body.STATUS === 'TXN_SUCCESS') {
