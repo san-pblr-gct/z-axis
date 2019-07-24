@@ -3,7 +3,6 @@ export default theme => ({
     overflow: 'hidden',
     position: 'relative',
     width: '100%',
-    minHeight: '100vh',
     color: '#333',
   },
   contentWrapper: {

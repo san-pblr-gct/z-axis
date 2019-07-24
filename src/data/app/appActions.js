@@ -64,7 +64,7 @@ export const getCurrentClues = async () => {
 };
 
 export const updateUserLevel = () => async (dispatch, getState) => {
-  const { app : { level } } = getState();
+  const { app: { level } } = getState();
   try {
     const currentLevel = level;
     await AsyncStorage.setItem('level', currentLevel + 1);
@@ -136,7 +136,7 @@ export const getCheckSum = (body = {}) => dispatch => {
     },
   })
     .then(response => {
-      if(response.ok) return response.text();
+      if (response.ok) return response.text();
       throw new Error('Network response was not ok.');
     })
     .then(text => {
@@ -145,10 +145,12 @@ export const getCheckSum = (body = {}) => dispatch => {
       ]);
     })
     .catch(() => {
-      dispatch(setError({
-        message: 'Techincal error! Clues not enabled.',
-        type: 'warning',
-      }));
+      dispatch([
+        setError({
+          message: 'Techincal error! Clues not enabled.',
+          type: 'warning',
+        }),
+      ]);
     });
 };
 
