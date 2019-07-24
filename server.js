@@ -13,12 +13,12 @@ import bodyParser from 'body-parser';
 
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary';
 import AppShell from './src/components/AppShell/AppShell';
-import Crypt from './src/components/Pages/Crypt';
 
 import theme from './src/config/theme';
 import store from './src/data/store';
 
 import { getMetaTags } from './src/utils/helpers';
+import FullpageLoader from './src/components/FullpageLoader/FullpageLoader';
 
 const cors = require('cors')({ origin: true });
 
@@ -50,7 +50,7 @@ app.get('**', (req, res) => {
         <ErrorBoundary>
           <ReduxProvider store={store}>
             <AppShell>
-              <Crypt />
+              <FullpageLoader />
             </AppShell>
           </ReduxProvider>
         </ErrorBoundary>
