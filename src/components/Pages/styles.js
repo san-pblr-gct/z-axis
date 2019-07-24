@@ -49,11 +49,11 @@ export default () => ({
     marginTop: 20,
   },
   fab: {
-    height: 40,
-    width: 40,
+    height: 44,
+    width: 44,
     float: 'right',
     top: -30,
-    right: -15,
+    // right: -15,
     marginLeft: 5,
   },
 });

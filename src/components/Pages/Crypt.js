@@ -17,6 +17,7 @@ import Clues from './Clue';
 import { RulesContent } from '../Pages/Rules';
 import { RefreshContent } from '../Pages/Refresh';
 import Answer from './Answer';
+import Pay from './Pay';
 
 import styles from './styles';
 
@@ -71,8 +72,7 @@ class Page extends Component {
     setAnswerError(null);
   }
   render() {
-    const { classes, app: { question, error, level, loading } } = this.props;
-
+    const { classes, app: { clues, question, error, level, loading } } = this.props;
     return <React.Fragment>
       {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)} />}
       {loading && <FullpageLoader />}
@@ -93,7 +93,7 @@ class Page extends Component {
         <Typography className={classes.pageTitle1} variant="caption">{`Level ${level}`}</Typography>
         <Typography variant="h6" className={classes.question}>{question}</Typography>
         <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} helperText={''} />
-        <Clues />
+        {clues.length ? <Clues /> : <Pay />}
       </Content>}
 
       <DialogBox title="Rules" open={this.state.rules} handleClose={this.handleClose} handleAgree={this.handleClose}><RulesContent /></DialogBox>

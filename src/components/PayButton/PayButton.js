@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 import React, { Component } from 'react';
-// import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
+// import Fab from '@material-ui/core/Fab';
 import HourGlassIcon from '@material-ui/icons/HourglassFull'
 import { withStyles } from '@material-ui/core/styles';
 
@@ -18,10 +18,10 @@ class Paytmbutton extends Component {
     document.getElementById('pay-form').submit();
   }
   render() {
-    const { classes } = this.props;
+    // const { classes } = this.props;
     const { url, orderId, merchantId, website, industryTypeId, channelId, customerId, amount, phone, email, callbackUrl, checksum } = this.props;
 
-    return <form id="pay-form" style={{ marginBottom: 0 }} className="form-control" action={url} name="f1" method="POST">
+    return <form id="pay-form" style={{ marginBottom: 0, display: 'inline' }} className="form-control" action={url} name="f1" method="POST">
       <input type="hidden" name="MID" value={merchantId} />
       <input type="hidden" name="WEBSITE" value={website} />
       <input type="hidden" name="INDUSTRY_TYPE_ID" value={industryTypeId} />
@@ -33,18 +33,14 @@ class Paytmbutton extends Component {
       <input type="hidden" name="EMAIL" value={email} />
       <input type="hidden" name="CALLBACK_URL" size="64" value={callbackUrl} />
       <input type="hidden" name="CHECKSUMHASH" value={checksum} />
-      <Fab className={classes.fab} color={'secondary'} onClick={this.onSubmit.bind(this)} aria-label="clues" name="clues">
+      {/* <Fab className={classes.fab} color={'secondary'} onClick={this.onSubmit.bind(this)} aria-label="clues" name="clues">
         {this.state.submit
           ? <HourGlassIcon />
-          : `Clues ${this.props.amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
-      </Fab>
-      {/* <Button variant="contained" color="secondary" style={{ margin: '0 auto', display: 'block', padding: 0, width: '100%', height: 44 }} disabled={this.state.submit}>
-        <input type="submit" style={{ outline: 'none', color: 'white', padding: 0, background: 'none', border: 'none', width: '100%', height: 44, fontSize: 14, textTransform: 'uppercase', fontWeight: 'normal' }} value={
-          this.state.submit
-            ? 'Please wait..'
-            : `Reveal Clues: ${this.props.amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
-          onClick={this.onSubmit.bind(this)} />
-      </Button> */}
+          : `${this.props.amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
+      </Fab> */}
+      <Button variant="contained" color="primary" style={{ color: 'white', width: '100%', height: 44 }} disabled={this.state.submit} onClick={this.onSubmit.bind(this)}>
+        {this.state.submit ? <HourGlassIcon /> : `Clues: ${this.props.amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
+      </Button>
     </form>;
   }
 }

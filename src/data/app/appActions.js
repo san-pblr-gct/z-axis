@@ -127,7 +127,7 @@ export const getParameterByName = (name, url) => {
 };
 
 export const getCheckSum = (body = {}) => dispatch => {
-  fetch(`${url}/checksum`, {
+  fetch(process.env.KEY ? `${url}/checksum` : `/checksum`, {
     method: 'POST',
     mode: 'cors',
     body: JSON.stringify(body),

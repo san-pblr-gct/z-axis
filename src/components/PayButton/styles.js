@@ -2,11 +2,12 @@
 
 export default () => ({
   fab: {
-    height: 60,
-    width: 60,
-    position: 'fixed',
-    bottom: 10,
-    left: 'calc(50% - 30px)',
+    height: 40,
+    width: 40,
+    float: 'right',
+    // position: 'fixed',
+    top: -30,
+    // left: 'calc(50% - 30px)',
     marginLeft: 5,
   },
 });

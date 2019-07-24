@@ -32,7 +32,7 @@ class Answer extends Component {
             label="Answer"
             InputProps={{ autoComplete: "off" }}
             value={this.state.answer}
-            style={{ margin: 'auto', width: '100%' }}
+            style={{ margin: 'auto', width: '100%', marginBottom: 15 }}
             placeholder="Type in your answer here"
             helperText={helperText}
             margin="normal"
@@ -42,7 +42,7 @@ class Answer extends Component {
             disabled={Boolean(!disabled)} />
         </Grid>
         <Grid item xs={3} sm={2}>
-          <Button variant="contained" color="primary" onClick={this.handleFormSubmit.bind(this)} style={{ marginTop: 7, float: 'right' }} disabled={Boolean(!disabled)}>
+          <Button variant="contained" color="primary" onClick={this.handleFormSubmit.bind(this)} style={{ height: 53, float: 'right' }} disabled={Boolean(!disabled)}>
             <SendIcon />
           </Button>
         </Grid>
