@@ -54,6 +54,6 @@ export default () => ({
     float: 'right',
     top: -30,
     // right: -15,
-    marginLeft: 5,
+    marginLeft: 10,
   },
 });

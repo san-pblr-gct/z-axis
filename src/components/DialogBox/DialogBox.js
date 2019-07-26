@@ -14,10 +14,8 @@ class DialogBox extends React.Component {
     const { children, open, handleClose, handleAgree, title } = this.props;
     return (
       <Dialog
-        fullScreen={true}
         open={open}
         onClose={handleClose}
-        style={{ margin: 30 }}
         aria-labelledby="response-dialog-title">
         <DialogTitle id="response-dialog-title">{title}</DialogTitle>
         <DialogContent>
