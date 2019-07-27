@@ -39,7 +39,7 @@ class Pay extends Component {
         checksum={checksum}
         callbackUrl={callbackUrl}
         url={url} />
-      <img src="./img/partners.png" style={{ width: '100%', maxWidth: 250, margin: 'auto', display: 'block', marginTop: 10 }} />
+      {/* <img src="./img/partners.png" style={{ width: '100%', maxWidth: 250, margin: 'auto', display: 'block', marginTop: 10 }} /> */}
     </React.Fragment>;
   }
 }

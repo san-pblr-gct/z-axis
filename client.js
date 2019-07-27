@@ -20,7 +20,7 @@ import './assets/site/logo-512.png';
 import './assets/site/og_image.jpg';
 import './assets/site/bg.jpg';
 import './assets/site/bg2.jpg';
-import './assets/site/partners.png';
+// import './assets/site/partners.png';
 import './assets/social/instagram.svg';
 import './assets/social/facebook.png';
 import './assets/site/party.gif';
