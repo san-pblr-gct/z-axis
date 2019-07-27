@@ -1,24 +1,24 @@
 import React from 'react';
-import Two from '../../components/2048/2048';
-import Stepper from '../../components/Stepper/Stepper';
+// import Two from '../../components/2048/2048';
+// import Stepper from '../../components/Stepper/Stepper';
 
 import '../../../assets/crypts/you.jpg';
-import '../../../assets/crypts/chessboard.gif';
-import '../../../assets/crypts/equation.jpg';
-import '../../../assets/crypts/12_1.jpg';
-import '../../../assets/crypts/12_2.jpg';
-import '../../../assets/crypts/12_3.jpg';
-import '../../../assets/crypts/18_1.jpg';
-import '../../../assets/crypts/18_2.jpg';
-import '../../../assets/crypts/18_3.jpg';
+// import '../../../assets/crypts/chessboard.gif';
+// import '../../../assets/crypts/equation.jpg';
+// import '../../../assets/crypts/12_1.jpg';
+// import '../../../assets/crypts/12_2.jpg';
+// import '../../../assets/crypts/12_3.jpg';
+// import '../../../assets/crypts/18_1.jpg';
+// import '../../../assets/crypts/18_2.jpg';
+// import '../../../assets/crypts/18_3.jpg';
 
-const steps = num => [ {
-  imgPath: `./img/${num}_1.jpg`,
-}, {
-  imgPath: `./img/${num}_2.jpg`,
-}, {
-  imgPath: `./img/${num}_3.jpg`,
-} ];
+// const steps = num => [ {
+//   imgPath: `./img/${num}_1.jpg`,
+// }, {
+//   imgPath: `./img/${num}_2.jpg`,
+// }, {
+//   imgPath: `./img/${num}_3.jpg`,
+// } ];
 
 export default [
   {},
@@ -28,19 +28,9 @@ export default [
     clues: [ 'Workforce', 'Whats he pointing at?' ],
   },
   {
-    question: 'Dbqjubm pg Fohmboe',
-    answer: 'bc180dbc583491c00f8a1cd134f7517b',
-    clues: [ 'Cipher', 'Letter shift' ],
-  },
-  {
     question: "Where kings and queens contend.",
     answer: '53fb40c0dfc82831d472d01bb651216c',
     clues: [ '64^2', 'Black & White' ],
-  },
-  {
-    question: 'Centre of Gravity',
-    answer: '9e3669d19b675bd57058fd4664205d2a',
-    clues: [ 'Focus on the word', 'Vendetta' ],
   },
   {
     question: 'Blue Red Yellow Blue Green Red',
@@ -48,14 +38,9 @@ export default [
     clues: [ 'MNC', 'Logo' ],
   },
   {
-    question: 'vs[oys; pg omfos',
-    answer: 'a0ad3c74ad3b4ce8355e606fa1fd2ce4',
-    clues: [ 'Keyboard', 'Right shift' ],
-  },
-  {
-    question: 'VGhlIGxhbmQgb2YgdGhlIHJpc2luZyBzdW4=',
-    answer: '578ed5a4eecf5a15803abdc49f6152d6',
-    clues: [ 'Encode', 'base64' ],
+    question: 'Dbqjubm pg Fohmboe',
+    answer: 'bc180dbc583491c00f8a1cd134f7517b',
+    clues: [ 'Cipher', 'Letter shift' ],
   },
   {
     question: 'S O E N S Y A',
@@ -63,14 +48,44 @@ export default [
     clues: [ 'What constists of 7 things?', 'Happens all the time' ],
   },
   {
-    question: <img src="./img/chessboard.gif" style={{ height: 200, width: 200 }} />,
-    answer: 'cf26e29f41ea1a29ba20fd84c0caf55d',
-    clues: [ 'Short & sweet', 'Checkmate' ],
+    question: 'vs[oys; pg omfos',
+    answer: 'a0ad3c74ad3b4ce8355e606fa1fd2ce4',
+    clues: [ 'Keyboard', 'Right shift' ],
+  },
+  {
+    question: 'Centre of Gravity',
+    answer: '9e3669d19b675bd57058fd4664205d2a',
+    clues: [ 'Focus on the word', 'Vendetta' ],
   },
   {
     question: 'Taxi cabs are everywhere. Whats the most famous one?',
     answer: '25e2a30f44898b9f3e978b1786dcd85c',
     clues: [ 'It happened in a taxi from London.', '4 digits' ],
+  },
+  {
+    question: 'VGhlIGxhbmQgb2YgdGhlIHJpc2luZyBzdW4=',
+    answer: '578ed5a4eecf5a15803abdc49f6152d6',
+    clues: [ 'Encode', 'base64' ],
+  },
+  {
+    question: <img src="./img/chessboard.gif" style={{ height: 200, width: 200 }} />,
+    answer: 'cf26e29f41ea1a29ba20fd84c0caf55d',
+    clues: [ 'Short & sweet', 'Checkmate' ],
+  },
+  {
+    question: "🇮🇳 6238607069",
+    answer: 'cfcd208495d565ef66e7dff9f98764da',
+    clues: [ 'Facebook acquistion', 'Mathematics' ],
+  },
+  {
+    question: "Your \\Velocity",
+    answer: '17d49ab14f0d4a8bbffe14ad3d6b7b13',
+    clues: [ 'Space', "Programming character" ],
+  },
+  {
+    question: '6232427227',
+    answer: 'fb2a54d637484c4ca8adb2343237b89f',
+    clues: [ 'TTT TTT TTT', 'Dictionary' ],
   },
   {
     question: 'Brave as the sun',
@@ -84,39 +99,24 @@ export default [
     clues: [ 'Alexander', "'E azam'" ],
   },
   {
-    question: "Your \\Velocity",
-    answer: '17d49ab14f0d4a8bbffe14ad3d6b7b13',
-    clues: [ 'Space', "Programming character" ],
-  },
-  {
-    question: "🇮🇳 6238607069",
-    answer: 'cfcd208495d565ef66e7dff9f98764da',
-    clues: [ 'Facebook acquistion', 'Mathematics' ],
-  },
-  {
-    question: '6232427227',
-    answer: 'fb2a54d637484c4ca8adb2343237b89f',
-    clues: [ 'TTT TTT TTT', 'Dictionary' ],
-  },
-  {
     question: <img src="/img/equation.jpg" style={{ width: 200 }} />,
-    answer: '53fb40c0dfc82831d472d01bb651216c',
+    answer: '9f05aa4202e4ce8d6a72511dc735cce9',
     clues: [ 'Shade the closed region', 'Webweaver' ],
   },
   {
     question: 'In an alternate world, there is a city called Lilliput. In Lilliput, there are 12 places named A - L. If 4 places at equal distances can be connected by a straight line in a map, they can be considered to be of the same map code. Your task is to arrange these places in such a way there are 6 map codes.',
-    answer: '53fb40c0dfc82831d472d01bb651216c',
+    answer: 'bb05862dea4d7c1175586c17df9fc6ee',
     clues: [ 'Places can overlap', 'Rephrase the question cleverly.' ],
   },
-  {
-    question: <Two winningScore={2048} question={'64027'} variant={1} />,
-    answer: '1857f958831f749a4beaf711063f3b4a',
-    clues: [ '5 digit number', 'Unique digits' ],
-  },
-  {
-    // eslint-disable-next-line no-magic-numbers
-    question: <div><Stepper steps={steps(18)} /><p>They ____ ____ ____.</p></div>,
-    answer: '41b54445e957125e6f23470e6c6e6e80',
-    clues: [ 'First citizen of USA', 'Fan of Jodie Foster' ],
-  },
+  // {
+  //   // eslint-disable-next-line no-magic-numbers
+  //   question: <div><Stepper steps={steps(18)} /><p>They ____ ____ ____.</p></div>,
+  //   answer: '41b54445e957125e6f23470e6c6e6e80',
+  //   clues: [ 'First citizen of USA', 'Fan of Jodie Foster' ],
+  // },
+  // {
+  //   question: <Two winningScore={2048} question={'64027'} variant={1} />,
+  //   answer: '1857f958831f749a4beaf711063f3b4a',
+  //   clues: [ '5 digit number', 'Unique digits' ],
+  // },
 ]

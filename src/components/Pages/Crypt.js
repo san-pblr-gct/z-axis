@@ -18,6 +18,7 @@ import { RulesContent } from '../Pages/Rules';
 import { RefreshContent } from '../Pages/Refresh';
 import Answer from './Answer';
 import Pay from './Pay';
+import Victory from './Victory';
 
 import styles from './styles';
 
@@ -30,6 +31,13 @@ class Page extends Component {
     rules: false,
     reset: false,
   };
+
+  componentDidMount() {
+    const { getQuestion, checkPayment } = this.props;
+    getQuestion();
+    checkPayment();
+  }
+
   handleRulesOpen = () => {
     this.setState({ rules: true });
   };
@@ -58,21 +66,33 @@ class Page extends Component {
       url,
     });
   }
-  componentDidMount() {
-    const { getQuestion, checkPayment } = this.props;
-    getQuestion();
-    checkPayment();
+
+  handleVictoryShareClick = time => {
+    if (navigator && navigator.share) navigator.share({
+      title: `I have successfully cleared Z Axis in ${time}`,
+      text: mainDescription,
+      url,
+    });
   }
+
   handleAnswerSubmit(givenAnswer) {
     const { checkAnswer } = this.props;
     checkAnswer(givenAnswer);
   }
+
   handleErrorClose() {
     const { setAnswerError } = this.props;
     setAnswerError(null);
   }
+
   render() {
-    const { classes, app: { clues, question, error, level, loading } } = this.props;
+    const { classes, app: { clues, question, error, level, loading, victory, startTime, endTime } } = this.props;
+
+    if(victory) return <Content>
+      <Victory handleRefreshOpen={this.handleRefreshOpen} onShare={this.handleVictoryShareClick} startTime={startTime} endTime={endTime} />
+      <DialogBox title="Reset Progress" open={this.state.reset} handleClose={this.handleClose} handleAgree={this.handleResetAgree}><RefreshContent /></DialogBox>
+    </Content>;
+
     return <React.Fragment>
       {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)} />}
       {loading && <FullpageLoader />}

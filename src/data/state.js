@@ -7,5 +7,6 @@ export default {
     checksum: '',
     level: 1,
     loading: false,
+    victory: false,
   },
 };

@@ -14,6 +14,9 @@ export const SET_CHECKSUM = 'APP::CHECKSUM';
 export const SET_LEVEL = 'APP::SET_LEVEL';
 export const SET_LOADING = 'APP::SET_LOADING';
 export const UPDATE_USER_LEVEL = 'APP::UPDATE_USER_LEVEL';
+export const SET_VICTORIOUS = 'APP::SET_VICTORIOUS';
+export const SET_START_TIME = 'APP::SET_START_TIME';
+export const SET_END_TIME = 'APP::SET_END_TIME';
 
 export const setQuestion = createAction(SET_QUESTION);
 export const setAnswer = createAction(SET_ANSWER);
@@ -22,25 +25,33 @@ export const setError = createAction(SET_ERROR);
 export const setChecksum = createAction(SET_CHECKSUM);
 export const setLevel = createAction(SET_LEVEL);
 export const setLoading = createAction(SET_LOADING);
+export const setVictorious = createAction(SET_VICTORIOUS);
+export const setStartTime = createAction(SET_START_TIME);
+export const setEndTime = createAction(SET_END_TIME);
 
-export const getQuestion = () => async (dispatch) => {
+export const getQuestion = () => async dispatch => {
   const currentLevel = await getCurrentLevel();
   const currentClues = await getCurrentClues();
+  const startTime = await setStartTimeInAs();
+
+  if (currentLevel >= questions.length) {
+    const endTime = await setEndTimeInAs();
+    return dispatch([
+      setStartTime(startTime),
+      setEndTime(endTime),
+      setVictorious(true),
+    ]);
+  }
 
   const { question, answer, clues } = questions[currentLevel];
+
   dispatch([
+    setStartTime(+startTime),
     setQuestion(question),
     setAnswer(answer),
     setLevel(currentLevel),
     setClues(clues.slice(0, currentClues)),
   ]);
-};
-
-export const setAnswerError = (msg, type = 'error') => dispatch => {
-  dispatch(setError({
-    message: msg,
-    type,
-  }));
 };
 
 export const getCurrentLevel = async () => {
@@ -63,12 +74,54 @@ export const getCurrentClues = async () => {
   }
 };
 
+export const setStartTimeInAs = async () => {
+  try {
+    const start = await AsyncStorage.getItem('start');
+    if (start) return +start;
+
+    const existingStart = (new Date()).getTime();
+    await AsyncStorage.setItem('start', existingStart);
+    return existingStart;
+  } catch {
+    return 0;
+  }
+};
+
+export const setEndTimeInAs = async () => {
+  try {
+    const end = await AsyncStorage.getItem('end');
+    if (end) return +end;
+
+    const endTime = (new Date()).getTime();
+    await AsyncStorage.setItem('end', endTime);
+    return endTime;
+  } catch {
+    return 0;
+  }
+}
+
+export const setAnswerError = (msg, type = 'error') => dispatch => {
+  dispatch(setError({
+    message: msg,
+    type,
+  }));
+};
+
 export const updateUserLevel = () => async (dispatch, getState) => {
   const { app: { level } } = getState();
   try {
     const currentLevel = level;
     await AsyncStorage.setItem('level', currentLevel + 1);
     await AsyncStorage.setItem('clues', 0);
+
+    if (currentLevel+1 >= questions.length) {
+      const endTime = await setEndTimeInAs();
+      dispatch([
+        setEndTime(endTime),
+        setVictorious(true),
+      ]);
+    }
+
     dispatch([
       setAnswerError('Well done. Right answer!', 'success'),
       setLoading(true),
@@ -82,7 +135,7 @@ export const updateUserLevel = () => async (dispatch, getState) => {
   } catch {
     return false;
   }
-}
+};
 
 export const revealClues = async () => {
   try {
@@ -126,7 +179,12 @@ export const getParameterByName = (name, url) => {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 };
 
-export const getCheckSum = (body = {}) => dispatch => {
+export const getCheckSum = (body = {}) => (dispatch, getState) => {
+
+  const { app: { checksum } } = getState();
+  if (checksum) return;
+  dispatch(setLoading(true));
+
   fetch(process.env.KEY ? `${url}/checksum` : `/checksum`, {
     method: 'POST',
     mode: 'cors',
@@ -142,6 +200,7 @@ export const getCheckSum = (body = {}) => dispatch => {
     .then(text => {
       dispatch([
         setChecksum(text),
+        setLoading(false),
       ]);
     })
     .catch(() => {
@@ -170,4 +229,5 @@ export const resetLevels = () => async dispatch => {
   }, 2000);
   await AsyncStorage.setItem('level', 1);
   await AsyncStorage.removeItem('clues');
+  await AsyncStorage.removeItem('end');
 }

@@ -23,6 +23,8 @@ import './assets/site/bg2.jpg';
 import './assets/site/partners.png';
 import './assets/social/instagram.svg';
 import './assets/social/facebook.png';
+import './assets/site/party.gif';
+import './assets/site/victory.gif';
 
 function Main() {
   React.useEffect(() => {
