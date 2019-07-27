@@ -20,6 +20,9 @@ class Pay extends Component {
       'CALLBACK_URL': callbackUrl,
       'EMAIL': email,
       'MOBILE_NO': phone,
+      'PAYMENT_MODE_ONLY': 'yes',
+      'AUTH_MODE': '3D',
+      'PAYMENT_TYPE_ID': 'DC',
     });
   }
   render() {
