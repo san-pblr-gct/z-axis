@@ -38,8 +38,8 @@ class Paytmbutton extends Component {
           ? <HourGlassIcon />
           : `${this.props.amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
       </Fab> */}
-      <Button variant="contained" color="primary" style={{ color: 'white', width: '100%', height: 44 }} disabled={this.state.submit} onClick={this.onSubmit.bind(this)}>
-        {this.state.submit ? <HourGlassIcon /> : `Clues: ${this.props.amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
+      <Button variant="contained" color="primary" style={{ width: '100%', height: 44 }} disabled={this.state.submit} onClick={this.onSubmit.bind(this)}>
+        {this.state.submit ? <HourGlassIcon /> : `Clue: ${(1).toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}`}
       </Button>
     </form>;
   }

@@ -221,13 +221,14 @@ export const resetLevels = () => async dispatch => {
       type: 'info',
     }),
   ]);
-  setTimeout(() => {
-    dispatch([
-      getQuestion(),
-      setLoading(false),
-    ]);
-  }, 2000);
   await AsyncStorage.setItem('level', 1);
   await AsyncStorage.removeItem('clues');
   await AsyncStorage.removeItem('end');
+  setTimeout(() => {
+    dispatch([
+      getQuestion(),
+      setVictorious(false),
+      setLoading(false),
+    ]);
+  }, 2000);
 }

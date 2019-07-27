@@ -69,8 +69,8 @@ class Page extends Component {
 
   handleVictoryShareClick = time => {
     if (navigator && navigator.share) navigator.share({
-      title: `I have successfully cleared Z Axis in ${time}`,
-      text: mainDescription,
+      title: mainTitle,
+      text: `I have successfully solved all the levels of Z Axis in ${time}.`,
       url,
     });
   }
@@ -88,15 +88,14 @@ class Page extends Component {
   render() {
     const { classes, app: { clues, question, error, level, loading, victory, startTime, endTime } } = this.props;
 
-    if(victory) return <Content>
-      <Victory handleRefreshOpen={this.handleRefreshOpen} onShare={this.handleVictoryShareClick} startTime={startTime} endTime={endTime} />
-      <DialogBox title="Reset Progress" open={this.state.reset} handleClose={this.handleClose} handleAgree={this.handleResetAgree}><RefreshContent /></DialogBox>
-    </Content>;
-
     return <React.Fragment>
       {error && error.message && <ErrorMessage variant={error.type} message={error.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)} />}
       {loading && <FullpageLoader />}
-      {!loading && <Content>
+      {!loading && victory && <Content>
+        <Victory handleRefreshOpen={this.handleRefreshOpen} onShare={this.handleVictoryShareClick} startTime={startTime} endTime={endTime} />
+        <DialogBox title="Reset Progress" open={this.state.reset} handleClose={this.handleClose} handleAgree={this.handleResetAgree}><RefreshContent /></DialogBox>
+      </Content>}
+      {!loading && !victory && <Content>
         <CryptIcon className={classes.homeIcon} />
         <Fab className={classNames(classes.fab)} color={'primary'} onClick={this.handleShareClick} aria-label="share" name="share">
           <span className="hidden-accessiiblity">Share</span>

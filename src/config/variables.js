@@ -75,7 +75,7 @@ module.exports = {
   paymentEnv: 'prod',
   paytm: {
     test: {
-      amount: 49,
+      amount: 85,
       merchantId: 'lfBFyS02396274370168',
       website: "WEBSTAGING",
       orderId: timestamp,
@@ -88,7 +88,7 @@ module.exports = {
       url: `https://securegw-stage.paytm.in/theia/processTransaction?ORDER_ID=${timestamp}`,
     },
     prod: {
-      amount: 49,
+      amount: 85,
       merchantId: 'lzSXOq48634307639622',
       website: "DEFAULT",
       orderId: timestamp,

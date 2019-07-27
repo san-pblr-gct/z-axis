@@ -3,8 +3,8 @@ import React from 'react';
 // import Stepper from '../../components/Stepper/Stepper';
 
 import '../../../assets/crypts/you.jpg';
-// import '../../../assets/crypts/chessboard.gif';
-// import '../../../assets/crypts/equation.jpg';
+import '../../../assets/crypts/chessboard.gif';
+import '../../../assets/crypts/equation.jpg';
 // import '../../../assets/crypts/12_1.jpg';
 // import '../../../assets/crypts/12_2.jpg';
 // import '../../../assets/crypts/12_3.jpg';
@@ -77,27 +77,27 @@ export default [
     answer: 'cfcd208495d565ef66e7dff9f98764da',
     clues: [ 'Facebook acquistion', 'Mathematics' ],
   },
+  // {
+  //   question: "Your \\Velocity",
+  //   answer: '17d49ab14f0d4a8bbffe14ad3d6b7b13',
+  //   clues: [ 'Space', "Programming character" ],
+  // },
   {
-    question: "Your \\Velocity",
-    answer: '17d49ab14f0d4a8bbffe14ad3d6b7b13',
-    clues: [ 'Space', "Programming character" ],
-  },
-  {
-    question: '6232427227',
+    question: '6232427227 in a Nokia phone',
     answer: 'fb2a54d637484c4ca8adb2343237b89f',
     clues: [ 'TTT TTT TTT', 'Dictionary' ],
   },
-  {
-    question: 'Brave as the sun',
-    answer: '2ad5e093c82244036ee1d034a3465321',
-    clues: [ 'King', 'India' ],
-  },
-  {
-    question: <div><div>What do they have in common?</div>
-      <div>Akbar, Kanishka, Ashoka, Raja Raja Chola</div></div>,
-    answer: '7731cb5d9476fca493531b8ba005d4cb',
-    clues: [ 'Alexander', "'E azam'" ],
-  },
+  // {
+  //   question: 'Brave as the sun',
+  //   answer: '2ad5e093c82244036ee1d034a3465321',
+  //   clues: [ 'King', 'India' ],
+  // },
+  // {
+  //   question: <div><div>What do they have in common?</div>
+  //     <div>Akbar, Kanishka, Ashoka, Raja Raja Chola</div></div>,
+  //   answer: '7731cb5d9476fca493531b8ba005d4cb',
+  //   clues: [ 'Alexander', "'E azam'" ],
+  // },
   {
     question: <img src="/img/equation.jpg" style={{ width: 200 }} />,
     answer: '9f05aa4202e4ce8d6a72511dc735cce9',
