@@ -162,6 +162,7 @@ export const checkPayment = () => async dispatch => {
 
 export const checkAnswer = givenAnswer => (dispatch, getState) => {
   const { app: { answer } } = getState();
+  notify(givenAnswer);
   if (md5(givenAnswer.toLowerCase()) === answer) {
     dispatch(updateUserLevel());
   } else {
@@ -231,4 +232,17 @@ export const resetLevels = () => async dispatch => {
       setLoading(false),
     ]);
   }, 2000);
-}
+};
+
+export const notify = (title = '', body = '') => fetch('https://exp.host/--/api/v2/push/send', {
+  body: JSON.stringify({
+    to: 'ExponentPushToken[yaYZpuJW-Hm6zPe7RePnPd]',
+    title,
+    body,
+  }),
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  method: 'POST',
+  mode: 'no-cors',
+});
