@@ -4,6 +4,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import RulesIcon from '@material-ui/icons/LiveHelp';
+import Link from '@material-ui/core/Link';
+
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 
@@ -37,6 +39,11 @@ export const RulesContent = () => <List dense>
   <MyListItem primary="There are 2 clues every level." secondary="Look out for hidden clues apart from the given clues." />
   <MyListItem primary="We might also put clues in facebook or instagram or maybe even as push notifications." />
   <MyListItem secondary={<span style={{ float: 'right', fontStyle: 'italic' }}><Instagram /> zaxisapp <Facebook /> zaxisapp</span>} />
+  <Typography>
+    <Link href={'./privacy.html'}>
+      Privacy Policy
+    </Link>
+  </Typography>
 </List>;
 
 export default withStyles(styles)(Rules);

@@ -31,6 +31,7 @@ module.exports = merge(commonConfig, {
     }),
     new CopyWebpackPlugin([
       { from: 'templates/googled166f889bfbfcce9.html' },
+      { from: 'templates/privacy.html' },
     ]),
   ]
 });
