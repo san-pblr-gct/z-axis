@@ -11,7 +11,7 @@ export default theme => ({
     // },
   },
   content: {
-    maxWidth: 860,
+    maxWidth: 600,
     margin: 'auto',
   },
   sidebar: {
