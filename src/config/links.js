@@ -3,10 +3,10 @@ module.exports = [
     title: 'Home',
     links: [
       {
-        title: 'Z Axis - Think outside the box',
-        ogTitle: 'Z Axis - Think outside the box',
+        title: 'Z Axis Challenge - Think outside the box',
+        ogTitle: 'Z Axis Challenge - Think outside the box',
         description: 'Do you think outside the box?',
-        ogDescription: 'Z Axis is an Online Treasure Hunt App which will give you an online experience of a traditional treasure hunt. Your goal is to solve all the crypts.',
+        ogDescription: 'The Goal - Use your mind to solve everything without using Google.',
         ogImage: '/img/og_image.jpg',
         route: '/post/home/home/home',
       },

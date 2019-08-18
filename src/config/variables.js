@@ -1,7 +1,7 @@
 const links = require('../config/links');
 
 const shortName = 'Z Axis';
-const title = 'Z Axis';
+const title = 'Z Axis Challenge';
 const author = 'Sreeram Padmanabhan';
 const themeColor = '#000000';
 const description = 'Think out of the box.';

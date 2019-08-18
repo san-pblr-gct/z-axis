@@ -17,7 +17,7 @@ class Victory extends Component {
     const time = totalTime(startTime, endTime);
     // eslint-disable-next-line no-magic-numbers
     const percent = Math.ceil(time / 6) + 1;
-    const shareMessage = `I cleared the Z Axis Challenge in ${time} hours. Its your turn.`;
+    const shareMessage = `I have successfully completed the Z Axis Challenge in ${time} hours. Its your turn.`;
 
     return <div>
       <List dense>
