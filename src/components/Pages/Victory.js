@@ -17,13 +17,13 @@ class Victory extends Component {
     const { startTime, endTime } = this.props;
     const time = totalTime(startTime, endTime);
     const percent = Math.ceil(time / 6) + 1;
-    const shareMessage = `I have successfully completed the Z Axis Challenge in under ${time + 1} ${time ? 'hour' : 'hours'}. Its your turn now.`;
+    const shareMessage = `I have successfully completed the Z Axis Challenge in under ${time + 1} ${time ? 'hours' : 'hour'}. Its your turn now.`;
 
     return <div>
       <List dense>
         <img style={{ width: 200, margin: '10px auto', display: 'block' }} src={'/img/victory.gif'} />
         <Typography variant="h6" style={{ textAlign: 'center', margin: 10 }}>Congratulations!</Typography>
-        <Typography variant="subtitle1" style={{ textAlign: 'center', margin: 30 }}>{`You have completed the Z Axis Challenge. It took you just under ${time + 1} ${time ? 'hour' : 'hours'} to complete this. And that means you are in the top ${percent}% of the people who have cleared this.`}</Typography>
+        <Typography variant="subtitle1" style={{ textAlign: 'center', margin: 30 }}>{`You have completed the Z Axis Challenge. It took you just under ${time + 1} ${time ? 'hours' : 'hour'} to complete this. And that means you are in the top ${percent}% of the people who have cleared this.`}</Typography>
         <Typography style={{ textAlign: 'center', margin: 30 }}>Now its your turn to pass on the challenge.</Typography>
         <div style={{ width: 76, margin: 'auto' }}>
           {/* <Fab style={{ margin: 10 }} color={'primary'} onClick={() => this.props.handleRefreshOpen()} aria-label="share" name="share">
