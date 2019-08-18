@@ -16,7 +16,7 @@ class Victory extends Component {
     const { startTime, endTime } = this.props;
     const time = totalTime(startTime, endTime);
     // eslint-disable-next-line no-magic-numbers
-    const percent = Math.ceil(time / 6);
+    const percent = Math.ceil(time / 6) + 1;
 
     return <div>
       <List dense>
