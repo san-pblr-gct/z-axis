@@ -67,26 +67,36 @@ export default [
     answer: '578ed5a4eecf5a15803abdc49f6152d6',
     clues: [ 'Encode', 'base64' ],
   },
-  {
-    question: <img src="./img/chessboard.gif" style={{ height: 200, width: 200 }} />,
-    answer: 'cf26e29f41ea1a29ba20fd84c0caf55d',
-    clues: [ 'Short & sweet', 'Checkmate' ],
-  },
-  {
-    question: "🇮🇳 6238607069",
-    answer: 'd02c4c4cde7ae76252540d116a40f23a',
-    clues: [ 'Facebook acquistion', 'Mathematics' ],
-  },
+  // {
+  //   question: <img src="./img/chessboard.gif" style={{ height: 200, width: 200 }} />,
+  //   answer: 'cf26e29f41ea1a29ba20fd84c0caf55d',
+  //   clues: [ 'Short & sweet', 'Checkmate' ],
+  // },
+  // {
+  //   question: "🇮🇳 6238607069",
+  //   answer: 'd02c4c4cde7ae76252540d116a40f23a',
+  //   clues: [ 'Facebook acquistion', 'Mathematics' ],
+  // },
+  // {
+  //   question: '6232427227 in a Nokia phone',
+  //   answer: '756c455b0a8843bac42ebb608bd29ed2',
+  //   clues: [ 'TTT TTT TTT', 'Dictionary' ],
+  // },
+  // {
+  //   question: <img src="/img/equation.jpg" style={{ width: 200 }} />,
+  //   answer: '9f05aa4202e4ce8d6a72511dc735cce9',
+  //   clues: [ 'Shade the closed region', 'Webweaver' ],
+  // },
+  // {
+  //   question: 'In an alternate world, there is a city called Lilliput. In Lilliput, there are 12 places named A - L. If 4 places at equal distances can be connected by a straight line in a map, they can be considered to be of the same map code. Your task is to arrange these places in such a way there are 6 map codes.',
+  //   answer: 'bb05862dea4d7c1175586c17df9fc6ee',
+  //   clues: [ 'Places can overlap', 'Rephrase the question cleverly.' ],
+  // },
   // {
   //   question: "Your \\Velocity",
   //   answer: '17d49ab14f0d4a8bbffe14ad3d6b7b13',
   //   clues: [ 'Space', "Programming character" ],
   // },
-  {
-    question: '6232427227 in a Nokia phone',
-    answer: '756c455b0a8843bac42ebb608bd29ed2',
-    clues: [ 'TTT TTT TTT', 'Dictionary' ],
-  },
   // {
   //   question: 'Brave as the sun',
   //   answer: '2ad5e093c82244036ee1d034a3465321',
@@ -98,16 +108,6 @@ export default [
   //   answer: '7731cb5d9476fca493531b8ba005d4cb',
   //   clues: [ 'Alexander', "'E azam'" ],
   // },
-  {
-    question: <img src="/img/equation.jpg" style={{ width: 200 }} />,
-    answer: '9f05aa4202e4ce8d6a72511dc735cce9',
-    clues: [ 'Shade the closed region', 'Webweaver' ],
-  },
-  {
-    question: 'In an alternate world, there is a city called Lilliput. In Lilliput, there are 12 places named A - L. If 4 places at equal distances can be connected by a straight line in a map, they can be considered to be of the same map code. Your task is to arrange these places in such a way there are 6 map codes.',
-    answer: 'bb05862dea4d7c1175586c17df9fc6ee',
-    clues: [ 'Places can overlap', 'Rephrase the question cleverly.' ],
-  },
   // {
   //   // eslint-disable-next-line no-magic-numbers
   //   question: <div><Stepper steps={steps(18)} /><p>They ____ ____ ____.</p></div>,

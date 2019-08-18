@@ -67,10 +67,10 @@ class Page extends Component {
     });
   }
 
-  handleVictoryShareClick = time => {
+  handleVictoryShareClick = message => {
     if (navigator && navigator.share) navigator.share({
       title: mainTitle,
-      text: `I have successfully solved all the levels of Z Axis in ${time}.`,
+      text: message,
       url,
     });
   }

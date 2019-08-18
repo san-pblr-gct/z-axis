@@ -42,7 +42,7 @@ class Paytmbutton extends Component {
           : `${this.props.amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
       </Fab> */}
       <Button variant="contained" color="secondary" style={{ width: '100%', height: 44 }} disabled={this.state.submit} onClick={this.onSubmit.bind(this)}>
-        {this.state.submit ? <HourGlassIcon /> : `Clue: ${amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
+        {this.state.submit ? <HourGlassIcon /> : `Reveal Clue: ${amount.toLocaleString('en-GB', { style: 'currency', currency: 'INR' })}`}
       </Button>
     </form>;
   }
