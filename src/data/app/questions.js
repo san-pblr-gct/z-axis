@@ -84,7 +84,7 @@ export default [
   // },
   {
     question: '6232427227 in a Nokia phone',
-    answer: 'fb2a54d637484c4ca8adb2343237b89f',
+    answer: '756c455b0a8843bac42ebb608bd29ed2',
     clues: [ 'TTT TTT TTT', 'Dictionary' ],
   },
   // {
