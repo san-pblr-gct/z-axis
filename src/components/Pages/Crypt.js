@@ -109,7 +109,7 @@ class Page extends Component {
           <span className="hidden-accessiiblity">Reset</span>
           <Reset />
         </Fab>
-        <Typography className={classes.pageTitle1} variant="caption">{`Level ${level}`}</Typography>
+        <Typography className={classes.pageTitle1} variant="caption">{`${level} / 10`}</Typography>
         <Typography variant="h6" className={classes.question}>{question}</Typography>
         <Answer handleAnswerSubmit={this.handleAnswerSubmit.bind(this)} helperText={''} />
         {clues.length ? <Clues /> : <Pay />}
