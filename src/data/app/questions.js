@@ -74,7 +74,7 @@ export default [
   },
   {
     question: "🇮🇳 6238607069",
-    answer: '756c455b0a8843bac42ebb608bd29ed2',
+    answer: 'd02c4c4cde7ae76252540d116a40f23a',
     clues: [ 'Facebook acquistion', 'Mathematics' ],
   },
   // {
