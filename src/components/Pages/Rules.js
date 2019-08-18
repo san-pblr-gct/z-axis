@@ -33,17 +33,12 @@ class Rules extends Component {
 }
 
 export const RulesContent = () => <List dense>
-  <MyListItem primary="This is not a quiz! This is an Online Treasure Hunt. " />
-  <MyListItem primary="This hunt consists of certain number of levels. Each level contains a crypt/task/puzzle." secondary="And the goal is to solve it." />
+  <MyListItem primary="Welcome to the Z Axis challenge. " />
+  <MyListItem primary="The goal is to solve the 10 levels without using google." />
   <MyListItem primary="All answers are lowercase strings with only alphabets/numbers." secondary="And that means no spaces or special characters." />
   <MyListItem primary="There are 2 clues every level." secondary="Look out for hidden clues apart from the given clues." />
-  <MyListItem primary="We might also put clues in facebook or instagram or maybe even as push notifications." />
-  <MyListItem secondary={<span style={{ float: 'right', fontStyle: 'italic' }}><Instagram /> zaxisapp <Facebook /> zaxisapp</span>} />
-  <Typography>
-    <Link href={'./privacy.html'}>
-      Privacy Policy
-    </Link>
-  </Typography>
+  <MyListItem primary={<Link href={'./privacy.html'}>Privacy Policy</Link>} />
+  <MyListItem secondary={<span style={{ float: 'right', fontStyle: 'italic' }}><Instagram /> zaxischallenge <Facebook /> zaxischallenge</span>} />
 </List>;
 
 export default withStyles(styles)(Rules);

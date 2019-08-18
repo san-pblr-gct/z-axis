@@ -29,6 +29,7 @@ class Pay extends Component {
     const { app: { clues, checksum } } = this.props;
 
     return !clues.length && checksum && <React.Fragment>
+      <img src="./img/partners.jpg" style={{ width: '100%', maxWidth: 250, margin: 'auto', display: 'block', marginBottom: 20 }} />
       <PayButton
         amount={amount}
         merchantId={merchantId}
@@ -42,7 +43,6 @@ class Pay extends Component {
         checksum={checksum}
         callbackUrl={callbackUrl}
         url={url} />
-      <img src="./img/partners.jpg" style={{ width: '100%', maxWidth: 250, margin: 'auto', display: 'block', marginTop: 10 }} />
     </React.Fragment>;
   }
 }
