@@ -4,7 +4,7 @@ module.exports = [
     links: [
       {
         title: 'Z Axis Challenge - Think outside the box',
-        ogTitle: 'Z Axis Challenge - Think outside the box',
+        ogTitle: 'The Z Axis Challenge - Can you solve these puzzles within an hour?',
         description: 'Do you think outside the box?',
         ogDescription: 'The Goal - Use your mind to solve everything without using Google.',
         ogImage: '/img/og_image.jpg',
