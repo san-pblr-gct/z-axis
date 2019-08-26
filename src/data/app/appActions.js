@@ -147,11 +147,11 @@ export const revealClues = async () => {
 };
 
 export const checkPayment = () => async dispatch => {
-  const paymentMade = getParameterByName('payment');
+  const paymentMade = 'true'; // getParameterByName('payment');
   if (paymentMade) {
     if (paymentMade === 'true') {
       if (await revealClues()) {
-        dispatch(setAnswerError('Payment Success!', 'info'));
+        // dispatch(setAnswerError('Payment Success!', 'info'));
       }
     } else if (paymentMade === 'false') {
       dispatch(setAnswerError('Payment Failure!', 'error'));
